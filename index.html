@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio 2024 — Keven Mema</title>
+  <style>
+    @font-face { font-family: InterTight; src: url("fonts/inter-tight-500.woff2") format("woff2"); font-weight: 500; }
+    @font-face { font-family: InterTight; src: url("fonts/inter-tight-700.woff2") format("woff2"); font-weight: 700; }
+    @font-face { font-family: InterTight; src: url("fonts/inter-tight-500-italic.woff2") format("woff2"); font-weight: 500; font-style: italic; }
+    @font-face { font-family: MinionCondensed; src: url("fonts/minion-condensed-400.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: MinionCondensed; src: url("fonts/minion-condensed-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: MinionCondensed; src: url("fonts/minion-condensed-700.woff2") format("woff2"); font-weight: 700; }
+    @font-face { font-family: AktivExtended; src: url("fonts/aktiv-extended-700.woff2") format("woff2"); font-weight: 700; }
+    @font-face { font-family: NeueHaas; src: url("fonts/neue-haas-500.woff2") format("woff2"); font-weight: 500; }
+    @font-face { font-family: NeueHaas; src: url("fonts/neue-haas-700.woff2") format("woff2"); font-weight: 700; }
+
+    :root {
+      --purple: hsl(280.63 77.42% 75.69%);
+      --ink: hsl(60 2.86% 6.86%);
+      --accent: hsl(74.92 79.12% 48.82%);
+      --site-width: min(1500px, 92vw);
+      --row: calc(var(--site-width) * .0215);
+      --gap: 11px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; overflow-x: hidden; color: var(--ink); background: var(--purple); font-family: InterTight, Arial, sans-serif; }
+    a { color: inherit; }
+
+    .site-header {
+      position: fixed;
+      z-index: 50;
+      inset: 0 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+      padding: 0 2vw;
+      background: var(--purple);
+      font-family: AktivExtended, Arial, sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: .03em;
+    }
+    .site-header a { text-decoration: none; }
+    .site-header a:last-child {
+      font-family: InterTight, Arial, sans-serif;
+      font-size: 2rem;
+      font-weight: 500;
+      letter-spacing: 0;
+    }
+
+    .opening { padding-top: 136px; }
+    .opening-grid,
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(24, minmax(0, 1fr));
+      column-gap: var(--gap);
+      row-gap: var(--gap);
+      width: var(--site-width);
+      margin: 0 auto;
+    }
+    .opening-grid { grid-template-rows: repeat(30, minmax(var(--row), auto)); }
+
+    .email {
+      z-index: 6;
+      grid-area: 1 / 2 / 3 / 14;
+      align-self: start;
+      font-size: .98rem;
+      font-style: italic;
+    }
+
+    .portfolio {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      overflow: visible;
+      font-family: MinionCondensed, Georgia, serif;
+      font-size: clamp(130px, 17.17vw, 280.1px);
+      font-weight: 400;
+      line-height: .86;
+      letter-spacing: 0;
+      white-space: nowrap;
+    }
+    .portfolio-front { z-index: 4; grid-area: 3 / 2 / 12 / 26; }
+    .portfolio-back { z-index: 2; grid-area: 9 / 2 / 18 / 26; }
+
+    .portrait {
+      z-index: 3;
+      grid-area: 7 / 14 / 26 / 26;
+      width: 100%;
+      height: 100%;
+      min-height: 0;
+      object-fit: cover;
+      object-position: 50% 50%;
+    }
+
+    .bio {
+      z-index: 1;
+      grid-area: 17 / 4 / 25 / 14;
+      align-self: start;
+      font-family: MinionCondensed, Georgia, serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      line-height: 1.4;
+    }
+    .bio p { margin: 0 0 1.6em; }
+
+    .identity {
+      z-index: 7;
+      grid-area: 26 / 14 / 29 / 25;
+      align-self: start;
+      white-space: nowrap;
+    }
+    .identity strong {
+      display: block;
+      font-family: NeueHaas, Arial, sans-serif;
+      font-size: clamp(48px, 5.4vw, 88px);
+      font-weight: 700;
+      line-height: .82;
+      letter-spacing: -.045em;
+    }
+    .identity em {
+      display: block;
+      font-family: MinionCondensed, Georgia, serif;
+      font-size: clamp(30px, 2.5vw, 40px);
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .work-section { padding-top: 0; }
+    .work-grid { grid-template-rows: repeat(28, minmax(var(--row), auto)); }
+    .marquee {
+      z-index: 2;
+      grid-area: 2 / 2 / 6 / 26;
+      align-self: center;
+      overflow: hidden;
+      padding: 3% 0;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 15%, #000 85%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, #000 15%, #000 85%, transparent 100%);
+    }
+    .marquee-link { display: block; color: inherit; text-decoration: none; }
+    .marquee-svg { display: block; width: 100%; height: 112px; overflow: visible; }
+    .marquee-svg-text {
+      font-family: MinionCondensed, Georgia, serif;
+      font-size: 64px;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+
+    .video {
+      z-index: 1;
+      grid-area: 7 / 2 / 27 / 26;
+      width: 100%;
+      aspect-ratio: 100 / 56.5;
+      background: #111;
+    }
+    .video iframe { display: block; width: 100%; height: 100%; border: 0; }
+
+    .scroll-pop { opacity: 0; transform: translateY(18px) scale(.975); transition: opacity .22s ease-out, transform .55s cubic-bezier(.2,.8,.2,1); }
+    .scroll-pop.visible { opacity: 1; transform: none; }
+
+    footer {
+      min-height: 30vh;
+      padding: 3vmax 0;
+      color: var(--accent);
+      background: hsl(195 5% 11%);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(24, minmax(0, 1fr));
+      grid-template-rows: repeat(6, minmax(var(--row), auto));
+      gap: var(--gap);
+      width: var(--site-width);
+      margin: 0 auto;
+    }
+    .footer-name {
+      grid-area: 1 / 2 / 3 / 14;
+      margin: 0;
+      font-family: InterTight, Arial, sans-serif;
+      font-size: 2.74rem;
+      font-weight: 500;
+      line-height: 1.22;
+    }
+    .footer-email {
+      grid-area: 2 / 2 / 4 / 14;
+      align-self: start;
+      margin: 0;
+      font-family: MinionCondensed, Georgia, serif;
+      font-size: 2.5rem;
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.4;
+    }
+    .footer-socials {
+      grid-area: 6 / 14 / 7 / 26;
+      align-self: end;
+      justify-self: end;
+      margin: 0;
+      font-size: 2.74rem;
+      font-weight: 500;
+      line-height: 1.22;
+      white-space: nowrap;
+    }
+    footer a { color: inherit; text-decoration: none; }
+
+    @media (max-width: 767px) {
+      :root { --site-width: 88vw; --row: 24px; }
+      .site-header { height: 72px; padding: 0 6vw; font-size: 17px; }
+      .site-header a:last-child { font-size: 20px; }
+      .opening { padding-top: 100px; }
+      .opening-grid { grid-template-columns: repeat(8, minmax(0, 1fr)); grid-template-rows: repeat(29, minmax(24px, auto)); }
+      .email { grid-area: 1 / 2 / 2 / 10; font-size: 15px; }
+      .portfolio { justify-content: flex-start; font-size: 27vw; }
+      .portfolio-front { grid-area: 3 / 2 / 6 / 10; }
+      .portfolio-back { grid-area: 6 / 2 / 9 / 10; }
+      .portrait { grid-area: 8 / 2 / 20 / 10; }
+      .bio { grid-area: 20 / 2 / 30 / 10; font-size: 20px; }
+      .identity { grid-area: 19 / 2 / 22 / 10; }
+      .identity strong { font-size: 12vw; }
+      .identity em { font-size: 7vw; }
+      .work-section { padding: 70px 0; }
+      .work-grid { display: block; width: 88vw; }
+      .marquee { margin-bottom: 55px; }
+      .marquee-svg { height: 88px; }
+      .marquee-svg-text { font-size: 64px; }
+      .video { aspect-ratio: 16 / 9; }
+      footer { padding: 7vw 0; }
+      .footer-grid {
+        grid-template-columns: repeat(8, minmax(0, 1fr));
+        grid-template-rows: repeat(5, minmax(24px, auto));
+        width: 88vw;
+      }
+      .footer-name { grid-area: 4 / 2 / 6 / 10; font-size: 28px; }
+      .footer-email { grid-area: 2 / 2 / 4 / 10; font-size: 32px; }
+      .footer-socials { grid-area: 1 / 2 / 2 / 10; justify-self: start; font-size: 24px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .scroll-pop { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a href="#home">Portfolio 2024</a>
+    <a href="work/index.html">Work</a>
+  </header>
+
+  <main>
+    <section class="opening" id="home">
+      <div class="opening-grid">
+        <a class="email" href="mailto:kevnking01@gmail.com">kevnking01@gmail.com</a>
+        <h1 class="portfolio portfolio-front">PORTFOLIO</h1>
+        <h1 class="portfolio portfolio-back">PORTFOLIO</h1>
+        <img class="portrait" src="portrait.jpg" alt="Black-and-white portrait of Keven Mema">
+
+        <div class="bio">
+          <p>Hey!</p>
+          <p>I’m Keven, a Director / Cinematographer (and a number of other things) based in New York. <em>“Before I had movies and cameras It was just me and my imagination.”</em></p>
+          <p>I've been a resident of the entertainment and commercial world for the last 4 years and counting. I've created, lead, and shaped every aspect of production, I’m dedicated to bringing visions to life.</p>
+        </div>
+
+        <div class="identity">
+          <strong>KEVEN MEMA</strong>
+          <em>Director &amp; Cinematographer</em>
+        </div>
+      </div>
+    </section>
+
+    <section class="work-section" id="work">
+      <div class="work-grid">
+        <div class="marquee scroll-pop" aria-label="Featured work">
+          <a class="marquee-link" href="work/index.html" aria-label="Open the Work overview">
+            <svg class="marquee-svg" fill="currentColor" aria-hidden="true">
+              <path id="featured-work-path" fill="none" stroke="transparent" d="M-550,54.284 L-550,54.284 S-183.15,84.284 0,84.284 S366.85,54.284 550,54.284 S916.85,84.284 1100,84.284 S1466.85,54.284 1650,54.284 S2016.85,84.284 2200,84.284"></path>
+              <text>
+                <textPath id="featured-work-text-path" class="marquee-svg-text" href="#featured-work-path" startOffset="-178.5">
+                  <tspan x="0">FEATURED WORK</tspan>
+                  <tspan x="405.563999">FEATURED WORK</tspan>
+                  <tspan x="811.127998">FEATURED WORK</tspan>
+                  <tspan x="1216.691997">FEATURED WORK</tspan>
+                  <tspan x="1622.255996">FEATURED WORK</tspan>
+                  <tspan x="2027.819995">FEATURED WORK</tspan>
+                </textPath>
+              </text>
+            </svg>
+          </a>
+        </div>
+
+        <div class="video scroll-pop">
+          <iframe src="https://www.youtube.com/embed/FwRbAJShcRA?feature=oembed" title="Dudley Williams - Addictive Personalities (Video Concept Directed by Keven Mema)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <p class="footer-name">KEVEN MEMA</p>
+      <p class="footer-email"><a href="mailto:kevenmema1@gmail.com">kevenmema1@gmail.com</a></p>
+      <p class="footer-socials"><a href="https://www.instagram.com/kevnmema/?locale=kk-KZ&amp;hl=am-et">Instagram</a>, <a href="mailto:kevnking01@gmail.com">Email</a>, <a href="https://www.linkedin.com/in/keven-m-9b7780258">Linkedin</a></p>
+    </div>
+  </footer>
+
+  <script>
+    const marquee = document.querySelector('.marquee');
+    const marqueeTextPath = document.querySelector('#featured-work-text-path');
+    const marqueeItems = [...document.querySelectorAll('#featured-work-text-path tspan')];
+    let marqueePeriod = 405.563999;
+    let marqueeOffset = -178.5;
+    let marqueePreviousTime;
+    let marqueePaused = false;
+
+    marquee.addEventListener('mouseenter', () => { marqueePaused = true; });
+    marquee.addEventListener('mouseleave', () => { marqueePaused = false; });
+
+    function spaceFeaturedWork() {
+      const textWidth = marqueeItems[0].getComputedTextLength();
+      const fontSize = parseFloat(getComputedStyle(marqueeItems[0]).fontSize);
+      marqueePeriod = textWidth + (fontSize * 0.5);
+      marqueeItems.forEach((item, index) => item.setAttribute('x', marqueePeriod * index));
+    }
+    document.fonts.ready.then(spaceFeaturedWork);
+    window.addEventListener('resize', spaceFeaturedWork);
+
+    function moveFeaturedWork(time) {
+      if (marqueePreviousTime !== undefined && !marqueePaused && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        marqueeOffset += 0.5;
+        if (marqueeOffset >= -178.5 + marqueePeriod) marqueeOffset -= marqueePeriod;
+        marqueeTextPath.setAttribute('startOffset', marqueeOffset);
+      }
+      marqueePreviousTime = time;
+      requestAnimationFrame(moveFeaturedWork);
+    }
+    requestAnimationFrame(moveFeaturedWork);
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => entry.target.classList.toggle('visible', entry.isIntersecting));
+    }, { threshold: 0.16, rootMargin: '0px 0px -6% 0px' });
+    document.querySelectorAll('.scroll-pop').forEach((element) => observer.observe(element));
+  </script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Work — Portfolio 2024</title>
+  <style>
+    @font-face { font-family: InterTight; src: url("fonts/inter-tight-500.woff2") format("woff2"); font-weight: 500; }
+    @font-face { font-family: InterTight; src: url("fonts/inter-tight-700.woff2") format("woff2"); font-weight: 700; }
+    @font-face { font-family: InterTight; src: url("fonts/inter-tight-500-italic.woff2") format("woff2"); font-weight: 500; font-style: italic; }
+    @font-face { font-family: MinionCondensed; src: url("fonts/minion-condensed-400.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: MinionCondensed; src: url("fonts/minion-condensed-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: AktivExtended; src: url("fonts/aktiv-extended-700.woff2") format("woff2"); font-weight: 700; }
+
+    :root {
+      --purple: hsl(280.63 77.42% 75.69%);
+      --ink: hsl(60 2.86% 6.86%);
+      --accent: hsl(74.92 79.12% 48.82%);
+      --site-width: min(1500px, 92vw);
+      --row: calc(var(--site-width) * .0215);
+      --gap: 11px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; overflow-x: hidden; color: white; background: hsl(195 5% 11%); font-family: InterTight, Arial, sans-serif; }
+    a { color: inherit; }
+
+    .site-header {
+      position: fixed;
+      z-index: 50;
+      inset: 0 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 0;
+      padding: 2vw;
+      background: hsl(195 5% 11%);
+    }
+    .site-title { color: var(--accent); font: 700 1.6rem/1 AktivExtended, Arial, sans-serif; letter-spacing: .03em; text-decoration: none; }
+    .work-link { color: var(--accent); font: 500 2rem/1 InterTight, Arial, sans-serif; text-decoration: underline; text-decoration-thickness: .045em; text-underline-offset: .2em; }
+
+    .work-page { padding-top: calc(4vw + 4rem); }
+    .work-composition {
+      display: grid;
+      grid-template-columns: repeat(24, minmax(0, 1fr));
+      grid-template-rows: repeat(151, minmax(var(--row), auto));
+      gap: var(--gap);
+      width: var(--site-width);
+      margin: 0 auto;
+    }
+    .page-title {
+      grid-area: 1 / 2 / 3 / 13;
+      z-index: 2;
+      align-self: start;
+      margin: 0;
+      color: var(--accent);
+      font: italic 400 2.5rem/1.4 MinionCondensed, Georgia, serif;
+    }
+    .work-image { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; }
+    .work-copy { align-self: start; color: white; font: italic 500 1.57rem/1.22 InterTight, Arial, sans-serif; }
+    .work-copy p { margin: 0; }
+    .work-heading { align-self: start; margin: 0; color: var(--accent); font-family: InterTight, Arial, sans-serif; font-size: min(calc(3.31 * 1.2vw + 1rem), 4.622rem); font-style: normal; font-weight: 700; line-height: .9; letter-spacing: 0; text-transform: uppercase; white-space: normal; }
+    .view-link { align-self: start; width: max-content; padding: 0; color: var(--accent); background: none; font: 500 1.57rem/1.22 InterTight, Arial, sans-serif; text-decoration: underline; text-decoration-thickness: .06em; text-underline-offset: .12em; }
+
+    .director-image { grid-area: 4 / 12 / 22 / 26; }
+    .director-image { object-fit: contain; }
+    .director-copy { grid-area: 11 / 2 / 15 / 11; }
+    .director-heading { grid-area: 7 / 2 / 11 / 10; }
+    .director-link { grid-area: 15 / 2 / 16 / 10; }
+
+    .short-image { grid-area: 29 / 12 / 44 / 26; }
+    .short-copy { grid-area: 35 / 2 / 40 / 11; }
+    .short-heading { grid-area: 30 / 2 / 35 / 9; }
+    .short-link { grid-area: 40 / 2 / 41 / 10; }
+
+    .editorial-image { grid-area: 50 / 12 / 83 / 26; }
+    .editorial-copy { grid-area: 60 / 2 / 67 / 11; }
+    .editorial-heading { grid-area: 56 / 2 / 60 / 14; }
+    .editorial-link { grid-area: 67 / 2 / 68 / 11; }
+
+    .branded-image { grid-area: 91 / 12 / 127 / 26; }
+    .branded-copy { grid-area: 103 / 2 / 109 / 11; }
+    .branded-heading { grid-area: 98 / 2 / 103 / 12; }
+    .branded-link { grid-area: 109 / 2 / 110 / 11; }
+
+    .demo-heading { grid-area: 129 / 2 / 131 / 12; }
+    .demo-copy { grid-area: 131 / 2 / 132 / 11; }
+    .demo-link { grid-area: 133 / 2 / 134 / 11; }
+    .demo-image { grid-area: 131 / 11 / 144 / 26; }
+    .demo-image { object-fit: contain; }
+
+    .source-reveal { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
+    .source-reveal.visible { opacity: 1; transform: none; }
+
+    footer { min-height: 30vh; padding: 3vmax 0; color: var(--accent); background: hsl(195 5% 11%); }
+    .footer-grid { display: grid; grid-template-columns: repeat(24, minmax(0, 1fr)); grid-template-rows: repeat(6, minmax(var(--row), auto)); gap: var(--gap); width: var(--site-width); margin: 0 auto; }
+    .footer-name { grid-area: 1 / 2 / 3 / 14; margin: 0; font: 500 2.74rem/1.22 InterTight, Arial, sans-serif; }
+    .footer-email { grid-area: 2 / 2 / 4 / 14; margin: 0; font: italic 400 2.5rem/1.4 MinionCondensed, Georgia, serif; }
+    .footer-socials { grid-area: 6 / 14 / 7 / 26; align-self: end; justify-self: end; margin: 0; font: 500 2.74rem/1.22 InterTight, Arial, sans-serif; white-space: nowrap; }
+    footer a { color: inherit; text-decoration: none; }
+
+    @media (max-width: 767px) {
+      :root { --site-width: 88vw; }
+      .site-header { height: 72px; padding: 0 6vw; }
+      .site-title { font-size: 17px; }
+      .work-link { font-size: 20px; }
+      .work-page { padding-top: 98px; }
+      .work-composition { display: block; width: 88vw; }
+      .page-title { margin: 0 0 52px; font-size: 11vw; }
+      .work-item { margin-bottom: 18px; }
+      .work-image { height: auto; max-height: 75vh; object-fit: cover; }
+      .work-copy { margin: 18px 0 28px; font-size: 21px; }
+      .work-heading { margin: 0 0 8px; font-size: clamp(48px, 13vw, 74px); line-height: .9; white-space: normal; }
+      .view-link { display: inline-block; margin-bottom: 90px; font-size: 20px; }
+      .demo-image { margin-top: 18px; }
+      footer { padding: 7vw 0; }
+      .footer-grid { display: block; width: 88vw; }
+      .footer-name, .footer-email, .footer-socials { margin: 0 0 20px; white-space: normal; }
+      .footer-name { font-size: 28px; }
+      .footer-email { font-size: 32px; }
+      .footer-socials { font-size: 24px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .source-reveal { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-title" href="../index.html">Portfolio 2024</a>
+    <a class="work-link" href="index.html" aria-current="page">Work</a>
+  </header>
+
+  <main class="work-page" id="top">
+    <div class="work-composition">
+      <h1 class="page-title source-reveal">Work</h1>
+
+      <img class="work-image work-item director-image source-reveal" src="images/director.webp" alt="Still from Keven Mema's directing work">
+      <div class="work-copy work-item director-copy source-reveal"><p>Here, you’ll explore my directorial journey. Where passion meets storytelling. Dive into a collection of projects that reflect my devotion to the art of filmmaking and the power of the visual narrative.</p></div>
+      <h2 class="work-heading work-item director-heading source-reveal">The Director</h2>
+      <a class="view-link work-item director-link source-reveal" href="../short-form-films-1/index.html">View projects</a>
+
+      <img class="work-image work-item short-image source-reveal" src="images/short-form.webp" alt="Still from a short-form film">
+      <div class="work-copy work-item short-copy source-reveal"><p>Here, you’ll find a collection of my passion projects that showcase my commitment to storytelling through film. Each short form film is a labor of love, capturing unique moments and emotions. I pour my heart into every frame, exploring diverse themes and styles that reflect my creative journey.</p></div>
+      <h2 class="work-heading work-item short-heading source-reveal">Short form FILMS (D.O.P)</h2>
+      <a class="view-link work-item short-link source-reveal" href="../short-form-films/index.html">View projects</a>
+
+      <img class="work-image work-item editorial-image source-reveal" src="images/editorial.webp" alt="Editorial photograph">
+      <div class="work-copy work-item editorial-copy source-reveal"><p>Here, you’ll find a curated collection of my visual photography, where each image captures a moment, a mood, and a narrative. My passion for photography drives me to explore diverse subjects and styles, whether it’s a vibrant fashion shoot or an intimate portrait. I strive to create compelling visuals that not only tell a story but also evoke emotion and inspire conversation.</p></div>
+      <h2 class="work-heading work-item editorial-heading source-reveal">EDITORIAL PHOTOGRAPHY</h2>
+      <a class="view-link work-item editorial-link source-reveal" href="../editorial-photography/index.html">View projects</a>
+
+      <img class="work-image work-item branded-image source-reveal" src="images/branded.webp" alt="Still from branded social content">
+      <div class="work-copy work-item branded-copy source-reveal"><p>Here, you'll find a showcase of my work focused towards creating dynamic, engaging content that captures the essence of brands. I’m passionate about telling stories that resonate, using visuals and narratives tailored to each brand's unique voice.</p></div>
+      <h2 class="work-heading work-item branded-heading source-reveal">branded social content</h2>
+      <a class="view-link work-item branded-link source-reveal" href="../branded-social-content/index.html">View projects</a>
+
+      <h2 class="work-heading work-item demo-heading source-reveal">DEmo Reels</h2>
+      <div class="work-copy work-item demo-copy source-reveal"><p>Here, you'll find a showcase of my demo reels.</p></div>
+      <a class="view-link work-item demo-link source-reveal" href="../demo-reels/index.html">View projects</a>
+      <img class="work-image work-item demo-image source-reveal" src="images/demo-reels.webp" alt="Demo reel still">
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <p class="footer-name">KEVEN MEMA</p>
+      <p class="footer-email"><a href="mailto:kevenmema1@gmail.com">kevenmema1@gmail.com</a></p>
+      <p class="footer-socials"><a href="https://www.instagram.com/kevnmema/?locale=kk-KZ&amp;hl=am-et">Instagram</a>, <a href="mailto:kevnking01@gmail.com">Email</a>, <a href="https://www.linkedin.com/in/keven-m-9b7780258">Linkedin</a></p>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => entry.target.classList.toggle('visible', entry.isIntersecting));
+    }, { threshold: 0.08, rootMargin: '0px 0px -5% 0px' });
+    document.querySelectorAll('.source-reveal').forEach((element) => observer.observe(element));
+  </script>
+</body>
+</html>

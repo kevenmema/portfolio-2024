@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demo Reels — Portfolio 2024</title>
+  <style>
+    @font-face { font-family: InterTight; src: url("../fonts/inter-tight-500.woff2") format("woff2"); font-weight: 500; }
+    @font-face { font-family: InterTight; src: url("../fonts/inter-tight-700.woff2") format("woff2"); font-weight: 700; }
+    @font-face { font-family: MinionCondensed; src: url("../fonts/minion-condensed-400.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: MinionCondensed; src: url("../fonts/minion-condensed-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: AktivExtended; src: url("../fonts/aktiv-extended-700.woff2") format("woff2"); font-weight: 700; }
+
+    :root {
+      --lime: hsl(74.92 79.12% 48.82%);
+      --black: hsl(60 2.86% 6.86%);
+      --dark: hsl(195 5% 11%);
+      --site-max: 1459px;
+      --site-gutter: 2vw;
+      --mobile-gutter: 6vw;
+      --gap: 11px;
+      --container-width: min(var(--site-max), calc(100vw - (var(--site-gutter) * 2)));
+      --row: calc(var(--container-width) * .0215);
+      --cell: calc((var(--site-max) - (var(--gap) * 23)) / 24);
+      --grid-gutter: calc(var(--site-gutter) - var(--gap));
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--dark); }
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      color: var(--lime);
+      background: var(--black);
+      font-family: InterTight, Arial, sans-serif;
+    }
+    a { color: inherit; }
+
+    .site-header {
+      position: fixed;
+      z-index: 50;
+      inset: 0 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 2vw;
+      color: var(--lime);
+      background: var(--black);
+      transition: background-color .25s ease;
+    }
+    .site-header.on-footer { background: var(--dark); }
+    .site-title {
+      font: 700 1.6rem/1 AktivExtended, Arial, sans-serif;
+      letter-spacing: .03em;
+      text-decoration: none;
+    }
+    .work-link {
+      font: 500 2rem/1 InterTight, Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .reels-section {
+      padding-top: calc(4vw + 4rem);
+      padding-bottom: 10vw;
+      color: var(--lime);
+      background: var(--black);
+    }
+    .reels-grid {
+      display: grid;
+      position: relative;
+      width: 100%;
+      grid-template-columns:
+        minmax(var(--grid-gutter), 1fr)
+        repeat(24, minmax(0, var(--cell)))
+        minmax(var(--grid-gutter), 1fr);
+      grid-template-rows: repeat(26, minmax(var(--row), auto));
+      gap: var(--gap);
+      overflow-x: hidden;
+      overflow-x: clip;
+    }
+    .reel-title {
+      grid-area: 2 / 5 / 7 / 23;
+      align-self: start;
+      z-index: 3;
+      margin: 0;
+      font: 700 clamp(5rem, 11.25vw, 10.6rem)/.71 InterTight, Arial, sans-serif;
+      letter-spacing: 0;
+      text-align: center;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .reel-player {
+      grid-area: 7 / 2 / 27 / 26;
+      align-self: start;
+      z-index: 5;
+      width: 100%;
+      min-width: 0;
+      overflow: hidden;
+      background: var(--black);
+    }
+    .reel-player video {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      border: 0;
+      object-fit: contain;
+      background: var(--black);
+    }
+
+    footer {
+      min-height: 30vh;
+      padding: 3vmax 0;
+      color: var(--lime);
+      background: var(--dark);
+    }
+    .footer-grid {
+      display: grid;
+      width: 100%;
+      grid-template-columns:
+        minmax(var(--grid-gutter), 1fr)
+        repeat(24, minmax(0, var(--cell)))
+        minmax(var(--grid-gutter), 1fr);
+      grid-template-rows: repeat(6, minmax(var(--row), auto));
+      gap: var(--gap);
+    }
+    .footer-name {
+      grid-area: 1 / 2 / 3 / 14;
+      margin: 0;
+      font: 500 2.74rem/1.22 InterTight, Arial, sans-serif;
+    }
+    .footer-email {
+      grid-area: 2 / 2 / 4 / 14;
+      margin: 0;
+      font: italic 400 2.5rem/1.4 MinionCondensed, Georgia, serif;
+    }
+    .footer-socials {
+      grid-area: 6 / 14 / 7 / 26;
+      align-self: end;
+      justify-self: end;
+      margin: 0;
+      font: 500 2.74rem/1.22 InterTight, Arial, sans-serif;
+      white-space: nowrap;
+    }
+    footer a { color: inherit; text-decoration: none; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 767px) {
+      :root {
+        --grid-gutter: calc(var(--mobile-gutter) - var(--gap));
+        --cell: calc((var(--site-max) - (var(--gap) * 7)) / 8);
+      }
+      .site-header { height: 72px; padding: 0 6vw; }
+      .site-title { font-size: 17px; }
+      .work-link { font-size: 20px; }
+      .reels-section { padding-top: 98px; padding-bottom: 18vw; }
+      .reels-grid {
+        grid-template-columns:
+          minmax(var(--grid-gutter), 1fr)
+          repeat(8, minmax(0, var(--cell)))
+          minmax(var(--grid-gutter), 1fr);
+        grid-template-rows: repeat(12, minmax(24px, auto));
+      }
+      .reel-title {
+        grid-area: 2 / 2 / 5 / 10;
+        align-self: center;
+        font-size: clamp(3.3rem, 15.4vw, 6.25rem);
+      }
+      .reel-player { grid-area: 5 / 2 / 13 / 10; }
+      .footer-grid {
+        grid-template-columns:
+          minmax(var(--grid-gutter), 1fr)
+          repeat(8, minmax(0, var(--cell)))
+          minmax(var(--grid-gutter), 1fr);
+        grid-template-rows: repeat(5, minmax(24px, auto));
+      }
+      .footer-name {
+        grid-area: 1 / 2 / 2 / 10;
+        font-size: 28px;
+      }
+      .footer-email {
+        grid-area: 2 / 2 / 4 / 10;
+        font-size: 32px;
+      }
+      .footer-socials {
+        grid-area: 4 / 2 / 6 / 10;
+        align-self: end;
+        justify-self: start;
+        font-size: 24px;
+        white-space: normal;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-title" href="../index.html">Portfolio 2024</a>
+    <a class="work-link" href="../work/index.html">Work</a>
+  </header>
+
+  <main>
+    <section class="reels-section" aria-labelledby="editors-reel-title">
+      <div class="reels-grid">
+        <h1 class="reel-title reveal" id="editors-reel-title">Editors Reel</h1>
+        <div class="reel-player reveal">
+          <video controls playsinline preload="metadata" poster="images/editors-reel.webp">
+            <source src="https://video.squarespace-cdn.com/content/v1/66eb0175a9c6ec4023cef1c7/73d77db9-8cf7-49f8-992c-c9e3b2c2b873/1920:1080" type="video/mp4">
+            <a href="https://video.squarespace-cdn.com/content/v1/66eb0175a9c6ec4023cef1c7/73d77db9-8cf7-49f8-992c-c9e3b2c2b873/1920:1080">Play the Editors Reel</a>
+          </video>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <p class="footer-name">KEVEN MEMA</p>
+      <p class="footer-email"><a href="mailto:kevenmema1@gmail.com">kevenmema1@gmail.com</a></p>
+      <p class="footer-socials"><a href="https://www.instagram.com/kevnmema/?locale=kk-KZ&amp;hl=am-et">Instagram</a>, <a href="mailto:kevnking01@gmail.com">Email</a>, <a href="https://www.linkedin.com/in/keven-m-9b7780258">Linkedin</a></p>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => entry.target.classList.toggle('visible', entry.isIntersecting));
+    }, { threshold: .06, rootMargin: '0px 0px -5% 0px' });
+
+    document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
+
+    const header = document.querySelector('.site-header');
+    const footer = document.querySelector('footer');
+    const themeObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => header.classList.toggle('on-footer', entry.isIntersecting));
+    }, { rootMargin: '-1px 0px -92% 0px', threshold: 0 });
+
+    themeObserver.observe(footer);
+  </script>
+</body>
+</html>
