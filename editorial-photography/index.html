@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Editorial Photography — Portfolio 2024</title>
+  <style>
+    @font-face { font-family: InterTight; src: url("../fonts/inter-tight-500.woff2") format("woff2"); font-weight: 500; }
+    @font-face { font-family: InterTight; src: url("../fonts/inter-tight-700.woff2") format("woff2"); font-weight: 700; }
+    @font-face { font-family: InterTight; src: url("../fonts/inter-tight-500-italic.woff2") format("woff2"); font-weight: 500; font-style: italic; }
+    @font-face { font-family: MinionCondensed; src: url("../fonts/minion-condensed-400.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: MinionCondensed; src: url("../fonts/minion-condensed-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: AktivExtended; src: url("../fonts/aktiv-extended-700.woff2") format("woff2"); font-weight: 700; }
+
+    :root {
+      --lime: hsl(74.92 79.12% 48.82%);
+      --dark: hsl(195 5% 11%);
+      --white: hsl(0 0% 100%);
+      --site-max: 1459px;
+      --site-gutter: 2vw;
+      --mobile-gutter: 6vw;
+      --gap: 11px;
+      --container-width: min(var(--site-max), calc(100vw - (var(--site-gutter) * 2)));
+      --row: calc(var(--container-width) * .0215);
+      --cell: calc((var(--site-max) - (var(--gap) * 23)) / 24);
+      --grid-gutter: calc(var(--site-gutter) - var(--gap));
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--dark); }
+    body { margin: 0; overflow-x: hidden; color: var(--white); background: var(--dark); font-family: InterTight, Arial, sans-serif; }
+    a { color: inherit; }
+
+    .site-header {
+      position: fixed;
+      z-index: 50;
+      inset: 0 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 2vw;
+      color: var(--lime);
+      background: var(--dark);
+    }
+    .site-title { font: 700 1.6rem/1 AktivExtended, Arial, sans-serif; letter-spacing: .03em; text-decoration: none; }
+    .work-link { font: 500 2rem/1 InterTight, Arial, sans-serif; text-decoration: none; }
+
+    .gallery-section { padding: 6.6vmax 0; background: var(--dark); }
+    .archive-grid {
+      display: grid;
+      position: relative;
+      width: 100%;
+      grid-template-rows: repeat(191, var(--row));
+      grid-template-columns: minmax(var(--grid-gutter), 1fr) repeat(24, minmax(0, var(--cell))) minmax(var(--grid-gutter), 1fr);
+      gap: var(--gap);
+      overflow-x: hidden;
+      overflow-x: clip;
+    }
+    .page-heading {
+      grid-area: 1 / 2 / 4 / 14;
+      z-index: 2;
+      align-self: start;
+      margin: 0;
+      color: var(--lime);
+      font: normal 700 min(calc(3.972vw + 1rem), 73.96px)/.71 InterTight, Arial, sans-serif;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+    .intro {
+      grid-area: 3 / 2 / 8 / 13;
+      z-index: 3;
+      align-self: start;
+      margin: 0;
+      color: var(--white);
+      font: normal 500 min(calc(.684vw + 1rem), 25.98px)/1.22 InterTight, Arial, sans-serif;
+    }
+    .gallery-image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-width: 0;
+      min-height: 0;
+      object-position: 50% 50%;
+    }
+    .cover { object-fit: cover; }
+    .contain { object-fit: contain; }
+
+    .photo-1  { grid-area: 3 / 13 / 24 / 26; z-index: 1; }
+    .photo-2  { grid-area: 25 / 13 / 56 / 26; z-index: 2; }
+    .photo-3  { grid-area: 30 / 3 / 52 / 12; z-index: 13; }
+    .photo-4  { grid-area: 54 / 2 / 76 / 13; z-index: 7; }
+    .photo-5  { grid-area: 8 / 3 / 28 / 12; z-index: 12; }
+    .photo-6  { grid-area: 56 / 13 / 78 / 26; z-index: 4; }
+    .photo-7  { grid-area: 78 / 2 / 98 / 26; z-index: 6; }
+    .photo-8  { grid-area: 98 / 2 / 120 / 14; z-index: 4; }
+    .photo-9  { grid-area: 103 / 14 / 125 / 26; z-index: 3; }
+    .photo-10 { grid-area: 126 / 15 / 146 / 23; z-index: 9; }
+    .photo-11 { grid-area: 146 / 14 / 166 / 23; z-index: 14; }
+    .photo-12 { grid-area: 145 / 3 / 167 / 14; z-index: 10; }
+    .photo-13 { grid-area: 167 / 13 / 184 / 25; z-index: 16; }
+    .photo-14 { grid-area: 121 / 4 / 144 / 13; z-index: 8; }
+    .photo-15 { grid-area: 168 / 4 / 188 / 12; z-index: 15; }
+
+    .related-section { padding: 3.3vmax 0; color: var(--lime); background: var(--dark); }
+    .related-grid {
+      display: grid;
+      position: relative;
+      width: 100%;
+      grid-template-rows: repeat(23, var(--row));
+      grid-template-columns: minmax(var(--grid-gutter), 1fr) repeat(24, minmax(0, var(--cell))) minmax(var(--grid-gutter), 1fr);
+      gap: var(--gap);
+      overflow-x: hidden;
+      overflow-x: clip;
+    }
+    .work-marquee {
+      grid-area: 2 / 2 / 6 / 26;
+      align-self: center;
+      overflow: hidden;
+      padding: 3% 0;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 15%, #000 85%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, #000 15%, #000 85%, transparent 100%);
+    }
+    .work-marquee a { display: block; color: inherit; text-decoration: none; }
+    .work-marquee svg { display: block; width: 100%; height: 112px; overflow: visible; }
+    .work-marquee text { font: 400 64px MinionCondensed, Georgia, serif; }
+    .related-image-link {
+      display: flex;
+      min-width: 0;
+      min-height: 0;
+      overflow: hidden;
+      align-items: center;
+      justify-content: center;
+    }
+    .related-image { display: block; width: 100%; height: 100%; min-width: 0; min-height: 0; object-fit: contain; object-position: 50% 50%; }
+    .related-title {
+      align-self: start;
+      z-index: 2;
+      margin: 0;
+      color: var(--lime);
+      font: italic 400 min(calc(1.8vw + 1rem), 42.26px)/1.4 MinionCondensed, Georgia, serif;
+      text-align: center;
+    }
+    .related-title a { color: inherit; }
+    .director-title { grid-area: 10 / 3 / 12 / 9; }
+    .director-image { grid-area: 11 / 2 / 20 / 10; }
+    .branded-title { grid-area: 7 / 11 / 9 / 17; }
+    .branded-image { grid-area: 9 / 10 / 24 / 18; }
+    .dop-title { grid-area: 10 / 19 / 12 / 25; }
+    .dop-image { grid-area: 9 / 18 / 21 / 26; }
+
+    footer { min-height: 30vh; padding: 3vmax 0; color: var(--lime); background: var(--dark); }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(24, minmax(0, 1fr));
+      grid-template-rows: repeat(6, minmax(var(--row), auto));
+      gap: var(--gap);
+      width: min(var(--site-max), 92vw);
+      margin: 0 auto;
+    }
+    .footer-name { grid-area: 1 / 2 / 3 / 14; margin: 0; font: 500 2.74rem/1.22 InterTight, Arial, sans-serif; }
+    .footer-email { grid-area: 2 / 2 / 4 / 14; margin: 0; font: italic 400 2.5rem/1.4 MinionCondensed, Georgia, serif; }
+    .footer-socials { grid-area: 6 / 14 / 7 / 26; align-self: end; justify-self: end; margin: 0; font: 500 2.74rem/1.22 InterTight, Arial, sans-serif; white-space: nowrap; }
+    footer a { color: inherit; text-decoration: none; }
+
+    .source-reveal { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
+    .source-reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 767px) {
+      :root {
+        --grid-gutter: calc(var(--mobile-gutter) - var(--gap));
+        --cell: calc((var(--site-max) - (var(--gap) * 7)) / 8);
+      }
+      .site-header { height: 72px; padding: 0 6vw; }
+      .site-title { font-size: 17px; }
+      .work-link { font-size: 20px; }
+      .gallery-section { padding: 6.6vmax 0; }
+      .archive-grid {
+        grid-template-rows: repeat(272, 24px);
+        grid-template-columns: minmax(var(--grid-gutter), 1fr) repeat(8, minmax(0, var(--cell))) minmax(var(--grid-gutter), 1fr);
+      }
+      .page-heading { grid-area: 1 / 2 / 5 / 10; font-size: min(calc(3.972vh + 1rem), 51.75px); }
+      .intro { grid-area: 20 / 2 / 28 / 10; font-size: min(calc(.684vh + 1rem), 22.16px); }
+      .photo-1  { grid-area: 5 / 2 / 19 / 10; }
+      .photo-2  { grid-area: 29 / 2 / 48 / 10; }
+      .photo-3  { grid-area: 48 / 2 / 67 / 10; }
+      .photo-4  { grid-area: 67 / 2 / 86 / 10; }
+      .photo-5  { grid-area: 86 / 2 / 105 / 10; }
+      .photo-6  { grid-area: 105 / 2 / 124 / 10; }
+      .photo-7  { grid-area: 124 / 2 / 130 / 10; }
+      .photo-8  { grid-area: 130 / 2 / 149 / 10; }
+      .photo-9  { grid-area: 149 / 2 / 168 / 10; }
+      .photo-10 { grid-area: 168 / 2 / 187 / 10; }
+      .photo-11 { grid-area: 187 / 2 / 203 / 10; }
+      .photo-12 { grid-area: 215 / 2 / 233 / 10; }
+      .photo-13 { grid-area: 202 / 2 / 216 / 10; }
+      .photo-14 { grid-area: 233 / 2 / 252 / 10; }
+      .photo-15 { grid-area: 252 / 2 / 271 / 10; }
+
+      .related-grid {
+        grid-template-rows: repeat(37, 24px);
+        grid-template-columns: minmax(var(--grid-gutter), 1fr) repeat(8, minmax(0, var(--cell))) minmax(var(--grid-gutter), 1fr);
+      }
+      .work-marquee { grid-area: 1 / 2 / 5 / 10; }
+      .marquee-svg text { font-size: min(calc(3.6vh + 1rem), 48.4px); }
+      .related-title { font-size: min(calc(1.8vh + 1rem), 32.2px); text-align: center; }
+      .director-title { grid-area: 5 / 2 / 7 / 10; }
+      .director-image { grid-area: 7 / 2 / 13 / 10; }
+      .branded-title { grid-area: 13 / 2 / 15 / 10; }
+      .branded-image { grid-area: 15 / 2 / 30 / 10; }
+      .dop-title { grid-area: 31 / 2 / 33 / 10; }
+      .dop-image { grid-area: 32 / 2 / 38 / 10; }
+
+      footer { padding: 7vw 0; }
+      .footer-grid { display: block; width: 88vw; }
+      .footer-name, .footer-email, .footer-socials { margin: 0 0 20px; white-space: normal; }
+      .footer-name { font-size: 28px; }
+      .footer-email { font-size: 32px; }
+      .footer-socials { font-size: 24px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .source-reveal { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-title" href="../index.html">Portfolio 2024</a>
+    <a class="work-link" href="../work/index.html">Work</a>
+  </header>
+
+  <main>
+    <section class="gallery-section">
+      <div class="archive-grid">
+        <h1 class="page-heading source-reveal">Photography</h1>
+        <p class="intro source-reveal">Below is curation of the work that captures striking visuals. My focus was on creating compelling imagery that not only showcased products but also told a story and connected with our audience. Here, you’ll find a selection of my photography work, highlighting my eye for detail and ability to convey emotion through each shot.</p>
+
+        <img class="gallery-image cover photo-1 source-reveal" src="images/light-allergy-6.webp" alt="Editorial portrait from the Light Allergy series">
+        <img class="gallery-image cover photo-2 source-reveal" src="images/light-allergy-43.webp" alt="Editorial portrait from the Light Allergy series">
+        <img class="gallery-image contain photo-3 source-reveal" src="images/light-allergy-22.webp" alt="Editorial portrait from the Light Allergy series">
+        <img class="gallery-image contain photo-4 source-reveal" src="images/light-allergy-44.webp" alt="Editorial portrait from the Light Allergy series">
+        <img class="gallery-image contain photo-5 source-reveal" src="images/light-allergy-34.webp" alt="Editorial portrait from the Light Allergy series">
+        <img class="gallery-image cover photo-6 source-reveal" src="images/light-allergy-14.webp" alt="Editorial portrait from the Light Allergy series">
+        <img class="gallery-image contain photo-7 source-reveal" src="images/light-allergy-49.webp" alt="Wide editorial photograph from the Light Allergy series">
+        <img class="gallery-image cover photo-8 source-reveal" src="images/poizon-thumbnail-3.webp" alt="Fashion editorial for Poizon">
+        <img class="gallery-image cover photo-9 source-reveal" src="images/poizon-red-green.webp" alt="Red and green fashion editorial for Poizon">
+        <img class="gallery-image contain photo-10 source-reveal" src="images/a7408151.webp" alt="Fashion editorial portrait">
+        <img class="gallery-image contain photo-11 source-reveal" src="images/poizon-ugg-outfit-1-3.webp" alt="UGG outfit editorial for Poizon">
+        <img class="gallery-image contain photo-12 source-reveal" src="images/a7408440.webp" alt="Fashion editorial portrait">
+        <img class="gallery-image contain photo-13 source-reveal" src="images/poizon-oil-green-dunks.webp" alt="Oil green Dunks product photograph for Poizon">
+        <img class="gallery-image contain photo-14 source-reveal" src="images/poizon-pg-dunks.webp" alt="Dunks fashion editorial for Poizon">
+        <img class="gallery-image contain photo-15 source-reveal" src="images/poizon-ugg-outfit-1-4.webp" alt="UGG outfit editorial for Poizon">
+      </div>
+    </section>
+
+    <section class="related-section" aria-label="Related work">
+      <div class="related-grid">
+        <div class="work-marquee source-reveal"><a href="../work/index.html" aria-label="Return to Work"><svg fill="currentColor" aria-hidden="true"><path id="work-wave" fill="none" stroke="transparent" d="M-400,54 L-400,54 S-133,84 0,84 S267,54 400,54 S667,84 800,84 S1067,54 1200,54 S1467,84 1600,84 S1867,54 2000,54"></path><text><textPath id="work-wave-text" href="#work-wave" startOffset="-110"><tspan x="0">WORK</tspan><tspan x="190">WORK</tspan><tspan x="380">WORK</tspan><tspan x="570">WORK</tspan><tspan x="760">WORK</tspan><tspan x="950">WORK</tspan><tspan x="1140">WORK</tspan><tspan x="1330">WORK</tspan><tspan x="1520">WORK</tspan><tspan x="1710">WORK</tspan><tspan x="1900">WORK</tspan></textPath></text></svg></a></div>
+
+        <h2 class="related-title director-title source-reveal"><a href="../short-form-films-1/index.html"><em>The Directors Chair</em></a></h2>
+        <a class="related-image-link director-image source-reveal" href="../short-form-films-1/index.html"><img class="related-image" src="images/related-director.webp" alt="The Directors Chair"></a>
+
+        <h2 class="related-title branded-title source-reveal"><a href="../branded-social-content/index.html"><em>Branded Content</em></a></h2>
+        <a class="related-image-link branded-image source-reveal" href="../branded-social-content/index.html"><img class="related-image" src="images/light-allergy-6.webp" alt="Branded Content"></a>
+
+        <h2 class="related-title dop-title source-reveal"><a href="../short-form-films/index.html"><em>D.O.P Showcase</em></a></h2>
+        <a class="related-image-link dop-image source-reveal" href="../short-form-films/index.html"><img class="related-image" src="images/related-dop.webp" alt="D.O.P Showcase"></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <p class="footer-name">KEVEN MEMA</p>
+      <p class="footer-email"><a href="mailto:kevenmema1@gmail.com">kevenmema1@gmail.com</a></p>
+      <p class="footer-socials"><a href="https://www.instagram.com/kevnmema/?locale=kk-KZ&amp;hl=am-et">Instagram</a>, <a href="mailto:kevnking01@gmail.com">Email</a>, <a href="https://www.linkedin.com/in/keven-m-9b7780258">Linkedin</a></p>
+    </div>
+  </footer>
+
+  <script>
+    const marquee = document.querySelector('.work-marquee');
+    const pathText = document.querySelector('#work-wave-text');
+    let offset = -110;
+    let paused = false;
+
+    marquee.addEventListener('mouseenter', () => { paused = true; });
+    marquee.addEventListener('mouseleave', () => { paused = false; });
+
+    function animateWork() {
+      if (!paused && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        offset += .5;
+        if (offset >= 80) offset -= 190;
+        pathText.setAttribute('startOffset', offset);
+      }
+      requestAnimationFrame(animateWork);
+    }
+    requestAnimationFrame(animateWork);
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => entry.target.classList.toggle('visible', entry.isIntersecting));
+    }, { threshold: .06, rootMargin: '0px 0px -5% 0px' });
+    document.querySelectorAll('.source-reveal').forEach((element) => observer.observe(element));
+  </script>
+</body>
+</html>
