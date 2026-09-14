@@ -310,6 +310,18 @@
       .footer-name { grid-area: 4 / 2 / 6 / 10; font-size: 28px; }
     }
 
+    @media (min-width: 768px) {
+      .site-header {
+        height: clamp(78px, 6.25vw, 128px);
+        min-height: 78px;
+        padding: 0 2vw;
+      }
+
+      .gallery-section {
+        padding-top: clamp(118px, 8.5vw, 150px);
+      }
+    }
+
     @supports (height: 100dvh) {
       @media (max-width: 767px) { .mobile-menu { min-height: 100dvh; } }
     }
