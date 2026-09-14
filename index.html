@@ -19,7 +19,7 @@
       --purple: hsl(280.63 77.42% 75.69%);
       --ink: hsl(60 2.86% 6.86%);
       --accent: hsl(74.92 79.12% 48.82%);
-      --site-width: min(1500px, 92vw);
+      --site-width: 96vw;
       --row: calc(var(--site-width) * .0215);
       --gap: 11px;
     }
@@ -45,12 +45,14 @@
       letter-spacing: .03em;
     }
     .site-header a { text-decoration: none; }
-    .site-header a:last-child {
+    .site-header .desktop-work {
       font-family: InterTight, Arial, sans-serif;
       font-size: 2rem;
       font-weight: 500;
       letter-spacing: 0;
     }
+    .menu-toggle,
+    .mobile-menu { display: none; }
 
     .opening { padding-top: 136px; }
     .opening-grid,
@@ -66,7 +68,7 @@
 
     .email {
       z-index: 6;
-      grid-area: 1 / 2 / 3 / 14;
+      grid-area: 1 / 1 / 3 / 14;
       align-self: start;
       font-size: .98rem;
       font-style: italic;
@@ -77,7 +79,7 @@
       align-items: center;
       justify-content: center;
       margin: 0;
-      overflow: visible;
+      overflow: hidden;
       font-family: MinionCondensed, Georgia, serif;
       font-size: clamp(130px, 17.17vw, 280.1px);
       font-weight: 400;
@@ -85,12 +87,13 @@
       letter-spacing: 0;
       white-space: nowrap;
     }
-    .portfolio-front { z-index: 4; grid-area: 3 / 2 / 12 / 26; }
-    .portfolio-back { z-index: 2; grid-area: 9 / 2 / 18 / 26; }
+    .portfolio span { display: inline-block; transform-origin: left center; }
+    .portfolio-front { z-index: 4; grid-area: 3 / 1 / 12 / 25; }
+    .portfolio-back { z-index: 2; grid-area: 9 / 1 / 18 / 25; }
 
     .portrait {
       z-index: 3;
-      grid-area: 7 / 14 / 26 / 26;
+      grid-area: 7 / 13 / 26 / 25;
       width: 100%;
       height: 100%;
       min-height: 0;
@@ -100,7 +103,7 @@
 
     .bio {
       z-index: 1;
-      grid-area: 17 / 4 / 25 / 14;
+      grid-area: 17 / 4 / 25 / 13;
       align-self: start;
       font-family: MinionCondensed, Georgia, serif;
       font-size: 1.6rem;
@@ -111,7 +114,7 @@
 
     .identity {
       z-index: 7;
-      grid-area: 26 / 14 / 29 / 25;
+      grid-area: 26 / 13 / 29 / 25;
       align-self: start;
       white-space: nowrap;
     }
@@ -135,7 +138,7 @@
     .work-grid { grid-template-rows: repeat(28, minmax(var(--row), auto)); }
     .marquee {
       z-index: 2;
-      grid-area: 2 / 2 / 6 / 26;
+      grid-area: 2 / 1 / 6 / 25;
       align-self: center;
       overflow: hidden;
       padding: 3% 0;
@@ -143,17 +146,12 @@
       mask-image: linear-gradient(to right, transparent 0%, #000 15%, #000 85%, transparent 100%);
     }
     .marquee-link { display: block; color: inherit; text-decoration: none; }
-    .marquee-svg { display: block; width: 100%; height: 112px; overflow: visible; }
-    .marquee-svg-text {
-      font-family: MinionCondensed, Georgia, serif;
-      font-size: 64px;
-      font-weight: 400;
-      letter-spacing: 0;
-    }
+    .marquee svg { display: block; width: 100%; height: 112px; overflow: visible; }
+    .marquee text { font: 400 clamp(48px, 4.2vw, 68px)/1 MinionCondensed, Georgia, serif; }
 
     .video {
       z-index: 1;
-      grid-area: 7 / 2 / 27 / 26;
+      grid-area: 7 / 1 / 27 / 25;
       width: 100%;
       aspect-ratio: 100 / 56.5;
       background: #111;
@@ -196,7 +194,7 @@
       line-height: 1.4;
     }
     .footer-socials {
-      grid-area: 6 / 14 / 7 / 26;
+      grid-area: 6 / 14 / 7 / 25;
       align-self: end;
       justify-self: end;
       margin: 0;
@@ -208,35 +206,226 @@
     footer a { color: inherit; text-decoration: none; }
 
     @media (max-width: 767px) {
-      :root { --site-width: 88vw; --row: 24px; }
-      .site-header { height: 72px; padding: 0 6vw; font-size: 17px; }
-      .site-header a:last-child { font-size: 20px; }
-      .opening { padding-top: 100px; }
-      .opening-grid { grid-template-columns: repeat(8, minmax(0, 1fr)); grid-template-rows: repeat(29, minmax(24px, auto)); }
-      .email { grid-area: 1 / 2 / 2 / 10; font-size: 15px; }
-      .portfolio { justify-content: flex-start; font-size: 27vw; }
-      .portfolio-front { grid-area: 3 / 2 / 6 / 10; }
-      .portfolio-back { grid-area: 6 / 2 / 9 / 10; }
-      .portrait { grid-area: 8 / 2 / 20 / 10; }
-      .bio { grid-area: 20 / 2 / 30 / 10; font-size: 20px; }
-      .identity { grid-area: 19 / 2 / 22 / 10; }
-      .identity strong { font-size: 12vw; }
-      .identity em { font-size: 7vw; }
-      .work-section { padding: 70px 0; }
-      .work-grid { display: block; width: 88vw; }
-      .marquee { margin-bottom: 55px; }
-      .marquee-svg { height: 88px; }
-      .marquee-svg-text { font-size: 64px; }
-      .video { aspect-ratio: 16 / 9; }
-      footer { padding: 7vw 0; }
-      .footer-grid {
-        grid-template-columns: repeat(8, minmax(0, 1fr));
-        grid-template-rows: repeat(5, minmax(24px, auto));
-        width: 88vw;
+      :root { --site-width: 100vw; --row: 24px; }
+
+      .site-header {
+        height: 94.9375px;
+        padding: 0 6vw;
+        font-family: MinionCondensed, Georgia, serif;
+        font-size: calc((2 - 1) * calc(.012 * min(100vh, 900px)) + 1rem);
+        font-weight: 400;
+        letter-spacing: 0;
+        transition: color 400ms cubic-bezier(.4, 0, .2, 1), background-color 400ms cubic-bezier(.4, 0, .2, 1);
       }
-      .footer-name { grid-area: 4 / 2 / 6 / 10; font-size: 28px; }
-      .footer-email { grid-area: 2 / 2 / 4 / 10; font-size: 32px; }
-      .footer-socials { grid-area: 1 / 2 / 2 / 10; justify-self: start; font-size: 24px; }
+      .site-header .desktop-work { display: none; }
+
+      .menu-toggle {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 35px;
+        height: 35px;
+        padding: 0;
+        color: var(--ink);
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+      }
+      .menu-toggle:focus { outline: none; }
+      .menu-toggle:focus-visible {
+        outline: 1px solid currentColor;
+        outline-offset: 4px;
+      }
+      .menu-toggle.pointer-focus:focus-visible { outline: none; }
+      .menu-toggle-line {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        display: block;
+        width: 35px;
+        height: 1px;
+        background: currentColor;
+        transition: transform 250ms cubic-bezier(.2, .6, .3, 1), width 250ms cubic-bezier(.2, .6, .3, 1);
+        transform-origin: center;
+      }
+      .menu-toggle-line:first-child { transform: translateY(-5.5px); }
+      .menu-toggle-line:last-child { transform: translateY(5.5px); }
+
+      .mobile-menu {
+        position: fixed;
+        z-index: 40;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: 94.9375px;
+        color: var(--accent);
+        background: var(--ink);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: visibility 600ms cubic-bezier(.4, 0, .2, 1), opacity 400ms cubic-bezier(.4, 0, .2, 1);
+      }
+      .mobile-menu a {
+        color: inherit;
+        font-family: InterTight, Arial, sans-serif;
+        font-size: 8.5vmin;
+        font-weight: 500;
+        line-height: 1;
+        text-decoration: none;
+        transform: translateY(20px);
+        transition: transform 600ms cubic-bezier(.4, 0, .2, 1);
+      }
+      body.menu-open { overflow: hidden; }
+      body.menu-open .site-header {
+        color: var(--accent);
+        background: var(--ink);
+      }
+      body.menu-open .menu-toggle { color: var(--accent); }
+      body.menu-open .menu-toggle-line:first-child {
+        width: 28px;
+        transform: translateX(3.5px) rotate(-135deg);
+      }
+      body.menu-open .menu-toggle-line:last-child {
+        width: 28px;
+        transform: translateX(3.5px) rotate(135deg);
+      }
+      body.menu-open .mobile-menu {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+      body.menu-open .mobile-menu a { transform: translateY(0); }
+
+      .opening { padding-top: 94.9375px; }
+      .opening-grid,
+      .work-grid,
+      .footer-grid {
+        grid-template-columns:
+          max(0px, calc(6vw - 11px))
+          repeat(8, minmax(0, 1fr))
+          max(0px, calc(6vw - 11px));
+        column-gap: 11px;
+        row-gap: 11px;
+        width: 100%;
+      }
+      .opening-grid { grid-template-rows: repeat(29, minmax(24px, auto)); }
+
+      .portfolio {
+        width: auto;
+        overflow: visible;
+        font-size: 91.8px;
+        line-height: 1.232;
+      }
+      .portfolio-front { z-index: 4; grid-area: 3 / 2 / 6 / 10; }
+      .portfolio-back { z-index: 5; grid-area: 1 / 2 / 4 / 10; }
+
+      .portrait {
+        z-index: 3;
+        grid-area: 3 / 2 / 15 / 10;
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        margin: 0;
+        object-fit: cover;
+        object-position: 50% 50%;
+      }
+
+      .identity {
+        z-index: 7;
+        grid-area: 15 / 2 / 18 / 10;
+        position: relative;
+        align-self: stretch;
+        margin: 0;
+        white-space: normal;
+      }
+      .identity strong {
+        position: absolute;
+        inset: 0 auto auto 0;
+        font-size: calc((2.74 - 1) * calc(.012 * min(100vh, 900px)) + 1rem);
+        line-height: 1.22;
+      }
+      .identity em {
+        position: absolute;
+        top: 35px;
+        left: 0;
+        font-size: calc((2.5 - 1) * calc(.012 * min(100vh, 900px)) + 1rem);
+        line-height: 1.316;
+      }
+
+      .email {
+        z-index: 6;
+        grid-area: 17 / 2 / 18 / 10;
+        margin: 0;
+        font-size: calc((.98 - 1) * calc(.012 * min(100vh, 900px)) + 1rem);
+        line-height: 1.4;
+      }
+      .bio {
+        z-index: 3;
+        grid-area: 18 / 2 / 30 / 10;
+        width: auto;
+        font-size: calc((1.6 - 1) * calc(.012 * min(100vh, 900px)) + 1rem);
+        line-height: 1.3664;
+      }
+      .bio p { margin: 0 0 2rem; }
+
+      .work-section { padding: 0; }
+      .work-grid { grid-template-rows: repeat(12, minmax(24px, auto)); }
+      .marquee {
+        grid-area: 1 / 2 / 5 / 10;
+        align-self: center;
+        margin: 0;
+        padding: 3% 0;
+      }
+      .marquee svg { height: 97px; }
+      .marquee text { font-size: 64px; }
+      .video {
+        grid-area: 5 / 1 / 13 / 11;
+        align-self: start;
+        aspect-ratio: 100 / 56.5;
+      }
+
+      footer { min-height: 0; padding: 3vmax 0; }
+      .footer-grid {
+        grid-template-rows: repeat(5, minmax(24px, auto));
+      }
+      .footer-name {
+        grid-area: 4 / 2 / 6 / 10;
+        font-size: calc((2.74 - 1) * calc(.012 * min(100vh, 900px)) + 1rem);
+      }
+      .footer-email {
+        grid-area: 2 / 2 / 4 / 10;
+        font-size: calc((2.5 - 1) * calc(.012 * min(100vh, 900px)) + 1rem);
+      }
+      .footer-socials {
+        grid-area: 1 / 2 / 2 / 10;
+        justify-self: start;
+        font-size: calc((1.57 - 1) * calc(.012 * min(100vh, 900px)) + 1rem);
+      }
+    }
+
+    @media (min-width: 768px) {
+      .site-header {
+        height: clamp(78px, 6.25vw, 128px);
+        min-height: 78px;
+        padding: 0 2vw;
+      }
+    }
+
+    @media (min-width: 768px) and (max-width: 1100px) {
+      :root { --site-width: 94vw; }
+      .opening { padding-top: clamp(118px, 13vw, 143px); }
+      .opening-grid { grid-template-rows: repeat(34, minmax(calc(var(--site-width) * .024), auto)); }
+      .portfolio { font-size: clamp(126px, 17vw, 187px); }
+      .portrait { grid-area: 7 / 12 / 26 / 25; }
+      .bio {
+        grid-area: 17 / 2 / 29 / 12;
+        font-size: clamp(19px, 2.25vw, 24px);
+      }
+      .identity { grid-area: 26 / 12 / 30 / 25; }
+      .identity strong { font-size: clamp(44px, 5.6vw, 62px); }
+      .identity em { font-size: clamp(26px, 3vw, 34px); }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -247,16 +436,24 @@
 </head>
 <body>
   <header class="site-header">
-    <a href="#home">Portfolio 2024</a>
-    <a href="work/index.html">Work</a>
+    <a class="site-title" href="#home">Portfolio 2024</a>
+    <a class="desktop-work" href="work/index.html">Work</a>
+    <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span class="menu-toggle-line" aria-hidden="true"></span>
+      <span class="menu-toggle-line" aria-hidden="true"></span>
+    </button>
   </header>
+
+  <nav class="mobile-menu" id="mobile-menu" aria-hidden="true" aria-label="Mobile navigation">
+    <a href="work/index.html">Work</a>
+  </nav>
 
   <main>
     <section class="opening" id="home">
       <div class="opening-grid">
         <a class="email" href="mailto:kevnking01@gmail.com">kevnking01@gmail.com</a>
-        <h1 class="portfolio portfolio-front">PORTFOLIO</h1>
-        <h1 class="portfolio portfolio-back">PORTFOLIO</h1>
+        <h1 class="portfolio portfolio-front"><span>PORTFOLIO</span></h1>
+        <h1 class="portfolio portfolio-back" aria-hidden="true"><span>PORTFOLIO</span></h1>
         <img class="portrait" src="portrait.jpg" alt="Black-and-white portrait of Keven Mema">
 
         <div class="bio">
@@ -276,18 +473,9 @@
       <div class="work-grid">
         <div class="marquee scroll-pop" aria-label="Featured work">
           <a class="marquee-link" href="work/index.html" aria-label="Open the Work overview">
-            <svg class="marquee-svg" fill="currentColor" aria-hidden="true">
-              <path id="featured-work-path" fill="none" stroke="transparent" d="M-550,54.284 L-550,54.284 S-183.15,84.284 0,84.284 S366.85,54.284 550,54.284 S916.85,84.284 1100,84.284 S1466.85,54.284 1650,54.284 S2016.85,84.284 2200,84.284"></path>
-              <text>
-                <textPath id="featured-work-text-path" class="marquee-svg-text" href="#featured-work-path" startOffset="-178.5">
-                  <tspan x="0">FEATURED WORK</tspan>
-                  <tspan x="405.563999">FEATURED WORK</tspan>
-                  <tspan x="811.127998">FEATURED WORK</tspan>
-                  <tspan x="1216.691997">FEATURED WORK</tspan>
-                  <tspan x="1622.255996">FEATURED WORK</tspan>
-                  <tspan x="2027.819995">FEATURED WORK</tspan>
-                </textPath>
-              </text>
+            <svg fill="currentColor" aria-hidden="true">
+              <path id="featured-wave" fill="none" stroke="transparent" d="M-550,54.284 L-550,54.284 S-183.15,84.284 0,84.284 S366.85,54.284 550,54.284 S916.85,84.284 1100,84.284 S1466.85,54.284 1650,54.284 S2016.85,84.284 2200,84.284"></path>
+              <text><textPath id="featured-wave-text" href="#featured-wave" startOffset="-178.5"><tspan x="0">FEATURED WORK</tspan><tspan x="405.564">FEATURED WORK</tspan><tspan x="811.128">FEATURED WORK</tspan><tspan x="1216.692">FEATURED WORK</tspan><tspan x="1622.256">FEATURED WORK</tspan><tspan x="2027.82">FEATURED WORK</tspan><tspan x="2433.384">FEATURED WORK</tspan></textPath></text>
             </svg>
           </a>
         </div>
@@ -309,40 +497,53 @@
 
   <script>
     const marquee = document.querySelector('.marquee');
-    const marqueeTextPath = document.querySelector('#featured-work-text-path');
-    const marqueeItems = [...document.querySelectorAll('#featured-work-text-path tspan')];
-    let marqueePeriod = 405.563999;
-    let marqueeOffset = -178.5;
-    let marqueePreviousTime;
-    let marqueePaused = false;
-
-    marquee.addEventListener('mouseenter', () => { marqueePaused = true; });
-    marquee.addEventListener('mouseleave', () => { marqueePaused = false; });
-
-    function spaceFeaturedWork() {
-      const textWidth = marqueeItems[0].getComputedTextLength();
-      const fontSize = parseFloat(getComputedStyle(marqueeItems[0]).fontSize);
-      marqueePeriod = textWidth + (fontSize * 0.5);
-      marqueeItems.forEach((item, index) => item.setAttribute('x', marqueePeriod * index));
-    }
-    document.fonts.ready.then(spaceFeaturedWork);
-    window.addEventListener('resize', spaceFeaturedWork);
+    const featuredPathText = document.querySelector('#featured-wave-text');
+    let featuredOffset = -178.5;
+    let featuredPreviousTime;
+    let wavePaused = false;
+    marquee.addEventListener('mouseenter', () => { wavePaused = true; });
+    marquee.addEventListener('mouseleave', () => { wavePaused = false; });
 
     function moveFeaturedWork(time) {
-      if (marqueePreviousTime !== undefined && !marqueePaused && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        marqueeOffset += 0.5;
-        if (marqueeOffset >= -178.5 + marqueePeriod) marqueeOffset -= marqueePeriod;
-        marqueeTextPath.setAttribute('startOffset', marqueeOffset);
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (featuredPreviousTime !== undefined && !wavePaused && !reduced) {
+        featuredOffset += Math.min(time - featuredPreviousTime, 50) * .03;
+        if (featuredOffset >= 227.064) featuredOffset -= 405.564;
       }
-      marqueePreviousTime = time;
+      featuredPathText.setAttribute('startOffset', String(featuredOffset));
+      featuredPreviousTime = time;
       requestAnimationFrame(moveFeaturedWork);
     }
+
     requestAnimationFrame(moveFeaturedWork);
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => entry.target.classList.toggle('visible', entry.isIntersecting));
     }, { threshold: 0.16, rootMargin: '0px 0px -6% 0px' });
     document.querySelectorAll('.scroll-pop').forEach((element) => observer.observe(element));
+
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+
+    function setMenuOpen(open) {
+      document.body.classList.toggle('menu-open', open);
+      menuToggle.setAttribute('aria-expanded', String(open));
+      menuToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      mobileMenu.setAttribute('aria-hidden', String(!open));
+    }
+
+    menuToggle.addEventListener('click', () => {
+      setMenuOpen(!document.body.classList.contains('menu-open'));
+    });
+    menuToggle.addEventListener('pointerdown', () => menuToggle.classList.add('pointer-focus'));
+    document.querySelector('.site-title').addEventListener('click', () => setMenuOpen(false));
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Tab') menuToggle.classList.remove('pointer-focus');
+      if (event.key === 'Escape') setMenuOpen(false);
+    });
+    window.matchMedia('(min-width: 768px)').addEventListener('change', (event) => {
+      if (event.matches) setMenuOpen(false);
+    });
   </script>
 </body>
 </html>
