@@ -669,6 +669,81 @@
       .footer-name { grid-area: 4 / 2 / 6 / 10; font-size: 28px; }
     }
 
+    @media (min-width: 768px) {
+      .site-header {
+        height: clamp(78px, 6.25vw, 128px);
+        min-height: 78px;
+        padding: 0 2vw;
+      }
+
+      .safari-browser .media-card {
+        background: transparent;
+      }
+
+      .safari-browser .media-card::before {
+        display: none;
+      }
+    }
+
+    @media (min-width: 768px) and (max-width: 1100px) {
+      .projects-section {
+        padding-top: clamp(118px, 13vw, 143px);
+      }
+
+      .archive-grid {
+        display: grid;
+        width: min(920px, 92vw);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: none;
+        grid-auto-rows: auto;
+        column-gap: clamp(18px, 3vw, 32px);
+        row-gap: clamp(18px, 2.5vw, 28px);
+        overflow: visible;
+      }
+
+      .archive-grid > * {
+        grid-area: auto;
+        min-width: 0;
+        margin: 0;
+      }
+
+      .project-title,
+      .description,
+      .role,
+      .date,
+      .rule {
+        grid-column: 1 / -1;
+      }
+
+      .project-title {
+        font-size: clamp(44px, 7vw, 66px);
+        line-height: .82;
+      }
+
+      .description,
+      .role,
+      .date {
+        font-size: clamp(18px, 2.25vw, 22px);
+      }
+
+      .lancome-video,
+      .ugg-video-hero,
+      .poizon-feature {
+        grid-column: 1 / -1;
+        justify-self: center;
+        width: min(100%, 900px);
+      }
+
+      .media-card {
+        align-self: start;
+        aspect-ratio: 16 / 9;
+      }
+
+      .rule {
+        margin: clamp(34px, 5vw, 54px) 0;
+      }
+    }
+
     @supports (height: 100dvh) {
       @media (max-width: 767px) { .mobile-menu { min-height: 100dvh; } }
     }
@@ -787,6 +862,9 @@
   </footer>
 
   <script>
+    const isSafariBrowser = /^((?!chrome|android|crios|fxios|edgios).)*safari/i.test(navigator.userAgent);
+    document.documentElement.classList.toggle('safari-browser', isSafariBrowser);
+
     const revealObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => entry.target.classList.toggle('visible', entry.isIntersecting));
     }, { threshold: 0.08, rootMargin: '0px 0px -3% 0px' });
@@ -814,15 +892,17 @@
     function animateWork(time) {
       const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (wavePreviousTime !== undefined && !paused && !reduced) {
-        waveOffset += (time - wavePreviousTime) * .035;
         const styles = getComputedStyle(waveTrack);
-        const period = waveWords[0].offsetWidth + parseFloat(styles.columnGap || styles.gap || 0);
-        if (period && waveOffset >= period) waveOffset -= period;
+        const gap = parseFloat(styles.columnGap || styles.gap) || 0;
+        const period = waveWords[0].offsetWidth + gap;
+        if (period > 0) {
+          waveOffset = (waveOffset + Math.min(time - wavePreviousTime, 50) * .035) % period;
+        }
       }
       waveTrack.style.transform = `translate3d(${-waveOffset}px, 0, 0)`;
       waveWords.forEach((word) => {
         const center = word.getBoundingClientRect().left + (word.offsetWidth / 2);
-        const phase = (center / Math.max(innerWidth, 1)) * Math.PI * 2;
+        const phase = (center / Math.max(window.innerWidth, 1)) * Math.PI * 2;
         word.style.transform = reduced ? 'none' : `translate3d(0, ${Math.sin(phase) * 15}px, 0) rotate(${Math.cos(phase) * 3}deg)`;
       });
       wavePreviousTime = time;
