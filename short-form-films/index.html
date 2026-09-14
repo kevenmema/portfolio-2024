@@ -296,6 +296,30 @@
       .footer-name { grid-area: 4 / 2 / 6 / 10; font-size: 28px; }
     }
 
+    @media (min-width: 768px) {
+      .site-header {
+        height: clamp(78px, 6.25vw, 128px);
+        min-height: 78px;
+        padding: 0 2vw;
+      }
+    }
+
+    @media (min-width: 768px) and (max-width: 1050px) {
+      .projects-section { padding-top: clamp(118px, 13vw, 137px); }
+      .page-heading { margin-bottom: clamp(56px, 7vw, 74px); }
+      .project-block {
+        grid-template-columns: minmax(0, 1fr);
+        gap: clamp(36px, 5vw, 52px);
+        margin-bottom: clamp(110px, 13vw, 142px);
+      }
+      .project-media {
+        justify-self: center;
+        width: min(100%, 900px);
+      }
+      .project-title { font-size: clamp(44px, 7vw, 68px); }
+      .project-description { font-size: clamp(20px, 2.5vw, 25px); }
+    }
+
     @supports (height: 100dvh) {
       @media (max-width: 767px) { .mobile-menu { min-height: 100dvh; } }
     }
@@ -384,15 +408,17 @@
     function animateWork(time) {
       const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (wavePreviousTime !== undefined && !paused && !reduced) {
-        waveOffset += (time - wavePreviousTime) * .035;
         const styles = getComputedStyle(waveTrack);
-        const period = waveWords[0].offsetWidth + parseFloat(styles.columnGap || styles.gap || 0);
-        if (period && waveOffset >= period) waveOffset -= period;
+        const gap = parseFloat(styles.columnGap || styles.gap) || 0;
+        const period = waveWords[0].offsetWidth + gap;
+        if (period > 0) {
+          waveOffset = (waveOffset + Math.min(time - wavePreviousTime, 50) * .035) % period;
+        }
       }
       waveTrack.style.transform = `translate3d(${-waveOffset}px, 0, 0)`;
       waveWords.forEach((word) => {
         const center = word.getBoundingClientRect().left + (word.offsetWidth / 2);
-        const phase = (center / Math.max(innerWidth, 1)) * Math.PI * 2;
+        const phase = (center / Math.max(window.innerWidth, 1)) * Math.PI * 2;
         word.style.transform = reduced ? 'none' : `translate3d(0, ${Math.sin(phase) * 15}px, 0) rotate(${Math.cos(phase) * 3}deg)`;
       });
       wavePreviousTime = time;
