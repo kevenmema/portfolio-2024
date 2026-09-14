@@ -20,56 +20,39 @@
 
     .site-header { position: fixed; z-index: 50; inset: 0 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 2vw; color: var(--ink); background: var(--lime); }
     .site-title { font: 700 1.6rem/1 AktivExtended, Arial, sans-serif; letter-spacing: .03em; text-decoration: none; }
-    .work-link { font: 500 2rem/1 InterTight, Arial, sans-serif; text-decoration: none; }
+    .desktop-work { font: 500 2rem/1 InterTight, Arial, sans-serif; text-decoration: none; }
+    .menu-toggle,
+    .mobile-menu { display: none; }
 
-    .bright-section { padding-top: calc(4vw + 4rem); padding-bottom: calc((var(--row) * 3) + (var(--gap) * 2)); background: var(--lime); }
+    .bright-section { padding-top: calc(4vw + 4rem); padding-bottom: clamp(100px, 12vw, 190px); background: var(--lime); }
     .project-grid, .related-grid, .footer-grid { display: grid; grid-template-columns: repeat(24, minmax(0, 1fr)); gap: var(--gap); width: var(--site-width); margin: 0 auto; }
-    .project-grid { grid-template-rows: repeat(107, var(--row)); }
-    .page-heading { grid-area: 1 / 2 / 3 / 14; align-self: start; margin: 0; font: italic 400 2.5rem/1.4 MinionCondensed, Georgia, serif; }
-    .project-intro { align-self: start; }
-    .project-title { margin: 0 0 .28em; font: 700 min(calc(3.31 * 1.2vw + 1rem), 4.622rem)/.82 InterTight, Arial, sans-serif; text-transform: uppercase; }
-    .project-description { margin: 0; font: italic 500 1.57rem/1.22 InterTight, Arial, sans-serif; }
-    .project-date { align-self: start; margin: 0; font: 700 clamp(18px, 1.7vw, 28px)/.9 InterTight, Arial, sans-serif; text-transform: uppercase; }
-    .credits { align-self: start; font: italic 500 .98rem/1.22 InterTight, Arial, sans-serif; }
+    .project-grid { display: block; }
+    .page-heading { margin: 0 0 clamp(68px, 8vw, 130px); font: italic 400 2.5rem/1.4 MinionCondensed, Georgia, serif; }
+    .project-block { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); align-items: start; gap: clamp(42px, 7vw, 120px); margin-bottom: clamp(130px, 14vw, 235px); }
+    .project-block:last-child { margin-bottom: 0; }
+    .project-text, .project-media { min-width: 0; }
+    .project-media { display: grid; gap: clamp(12px, 1vw, 18px); }
+    .project-intro { margin: 0 0 24px; }
+    .project-title { margin: 0 0 .28em; font: 700 clamp(48px, 4.8vw, 76px)/.84 InterTight, Arial, sans-serif; overflow-wrap: anywhere; text-transform: uppercase; }
+    .project-description { margin: 0; font: italic 500 clamp(21px, 1.65vw, 27px)/1.22 InterTight, Arial, sans-serif; }
+    .project-date { margin: 0 0 24px; font: 700 clamp(18px, 1.7vw, 28px)/.95 InterTight, Arial, sans-serif; text-transform: uppercase; }
+    .credits { font: italic 500 clamp(15px, 1vw, 17px)/1.22 InterTight, Arial, sans-serif; }
     .credits p { margin: 0 0 1.2em; }
-    .media { display: block; width: 100%; height: 100%; border: 0; background: #111; object-position: 50% 50%; }
+    .media { display: block; width: 100%; height: auto; border: 0; background: #111; object-position: 50% 50%; }
     .contain { object-fit: contain; }
     .cover { object-fit: cover; }
-    .video-wrap { position: relative; width: 100%; height: 100%; overflow: hidden; background: #111; }
+    .video-wrap { position: relative; width: 100%; height: auto; overflow: hidden; aspect-ratio: 16 / 9; background: #111; }
     .video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-
-    .moving-intro { grid-area: 4 / 2 / 9 / 13; }
-    .moving-video { grid-area: 4 / 14 / 14 / 26; }
-    .moving-date { grid-area: 9 / 2 / 12 / 8; }
-    .moving-credits { grid-area: 12 / 2 / 15 / 9; }
-    .addictive-intro { grid-area: 20 / 2 / 28 / 14; }
-    .addictive-video { grid-area: 20 / 14 / 30 / 26; }
-    .addictive-date { grid-area: 28 / 2 / 31 / 8; }
-    .addictive-credits { grid-area: 31 / 2 / 38 / 11; }
-    .burning-intro { grid-area: 42 / 2 / 50 / 14; }
-    .burning-image-one { grid-area: 42 / 14 / 52 / 26; }
-    .burning-image-two { grid-area: 53 / 14 / 63 / 26; }
-    .burning-date { grid-area: 49 / 2 / 52 / 8; }
-    .burning-credits { grid-area: 52 / 2 / 61 / 11; }
-    .ouija-intro { grid-area: 67 / 2 / 73 / 14; }
-    .ouija-image-one { grid-area: 68 / 14 / 77 / 26; }
-    .ouija-image-two { grid-area: 77 / 14 / 86 / 26; }
-    .ouija-date { grid-area: 73 / 2 / 76 / 8; }
-    .ouija-credits { grid-area: 76 / 2 / 85 / 11; }
-    .white-intro { grid-area: 88 / 2 / 94 / 14; }
-    .white-image-one { grid-area: 88 / 14 / 96 / 18; }
-    .white-image-two { grid-area: 88 / 18 / 96 / 25; }
-    .white-image-three { grid-area: 96 / 14 / 108 / 25; }
-    .white-date { grid-area: 94 / 2 / 97 / 8; }
-    .white-credits { grid-area: 97 / 2 / 106 / 11; }
+    .white-media { grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); }
+    .white-media .white-image-three { grid-column: 1 / -1; }
 
     .related-section { color: var(--lime); background: var(--dark); }
     .related-grid { grid-template-rows: repeat(15, var(--row)); }
-    .work-marquee { grid-area: 2 / 2 / 6 / 26; align-self: center; overflow: hidden; padding: 3% 0; -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 15%, #000 85%, transparent 100%); mask-image: linear-gradient(to right, transparent 0%, #000 15%, #000 85%, transparent 100%); }
+    .work-marquee { grid-area: 2 / 1 / 6 / 25; align-self: center; overflow: hidden; padding: 3% 0; -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 15%, #000 85%, transparent 100%); mask-image: linear-gradient(to right, transparent 0%, #000 15%, #000 85%, transparent 100%); }
     .work-marquee a { display: block; color: inherit; text-decoration: none; }
-    .work-marquee svg { display: block; width: 100%; height: 112px; overflow: visible; }
-    .work-marquee text { font: 400 64px MinionCondensed, Georgia, serif; }
-    .related-grid > a:not(.work-marquee a) { display: flex; min-width: 0; min-height: 0; overflow: hidden; align-items: center; justify-content: center; }
+    .wave-track { display: flex; align-items: center; width: max-content; min-height: 112px; gap: clamp(28px, 3vw, 52px); will-change: transform; }
+    .wave-word { display: block; flex: none; font: 400 clamp(52px, 4.3vw, 70px)/1 MinionCondensed, Georgia, serif; white-space: nowrap; will-change: transform; }
+    .related-grid > a { display: flex; min-width: 0; min-height: 0; overflow: hidden; align-items: center; justify-content: center; }
     .related-image { display: block; width: 100%; height: 100%; min-width: 0; min-height: 0; object-position: 50% 50%; }
     .related-dop { grid-area: 6 / 2 / 15 / 10; }
     .related-editorial { grid-area: 6 / 12 / 15 / 16; }
@@ -87,35 +70,217 @@
     .footer-grid { grid-template-rows: repeat(6, minmax(var(--row), auto)); }
     .footer-name { grid-area: 1 / 2 / 3 / 14; margin: 0; font: 500 2.74rem/1.22 InterTight, Arial, sans-serif; }
     .footer-email { grid-area: 2 / 2 / 4 / 14; margin: 0; font: italic 400 2.5rem/1.4 MinionCondensed, Georgia, serif; }
-    .footer-socials { grid-area: 6 / 14 / 7 / 26; align-self: end; justify-self: end; margin: 0; font: 500 2.74rem/1.22 InterTight, Arial, sans-serif; white-space: nowrap; }
+    .footer-socials { grid-area: 6 / 14 / 7 / 25; align-self: end; justify-self: end; margin: 0; font: 500 2.74rem/1.22 InterTight, Arial, sans-serif; white-space: nowrap; }
     footer a { color: inherit; text-decoration: none; }
 
     .reveal { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
     .reveal.visible { opacity: 1; transform: none; }
 
     @media (max-width: 767px) {
-      :root { --site-width: 88vw; }
-      .site-header { height: 72px; padding: 0 6vw; }
-      .site-title { font-size: 17px; }
-      .work-link { font-size: 20px; }
-      .bright-section { padding-top: 98px; padding-bottom: 80px; }
-      .project-grid, .related-grid { display: block; width: 88vw; }
-      .page-heading { margin: 0 0 54px; font-size: 11vw; }
-      .project-intro { margin: 0 0 24px; }
-      .project-title { font-size: 13vw; line-height: .88; }
-      .project-description { font-size: 21px; }
-      .project-date { margin: 24px 0 18px; font-size: 24px; }
-      .credits { margin-bottom: 34px; font-size: 15px; }
-      .video-wrap, .media { width: 100%; height: auto; aspect-ratio: 16 / 9; margin-bottom: 80px; }
-      .work-marquee { margin-bottom: 40px; }
-      .related-image { height: auto; aspect-ratio: 4 / 5; margin: 0 0 12px; object-fit: cover; }
-      .related-label { margin: 0 0 65px; font-size: 16px; text-align: left; }
-      footer { padding: 7vw 0; }
-      .footer-grid { display: block; width: 88vw; }
-      .footer-name, .footer-email, .footer-socials { margin: 0 0 20px; white-space: normal; }
-      .footer-name { font-size: 28px; }
-      .footer-email { font-size: 32px; }
-      .footer-socials { font-size: 24px; }
+      :root { --site-width: 100vw; --row: 24px; }
+
+      .site-header {
+        height: 91.34375px;
+        padding: 0 6vw;
+        font-family: MinionCondensed, Georgia, serif;
+        transition: color 400ms cubic-bezier(.4, 0, .2, 1), background-color 400ms cubic-bezier(.4, 0, .2, 1);
+      }
+      .site-title {
+        font-family: MinionCondensed, Georgia, serif;
+        font-size: calc((2 - 1) * calc(.012 * min(100vh, 900px)) + 1rem);
+        font-weight: 400;
+        line-height: 1.4;
+        letter-spacing: 0;
+      }
+      .site-header .desktop-work { display: none; }
+
+      .menu-toggle {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 35px;
+        height: 35px;
+        padding: 0;
+        color: inherit;
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+      }
+      .menu-toggle:focus { outline: none; }
+      .menu-toggle:focus-visible { outline: 1px solid currentColor; outline-offset: 4px; }
+      .menu-toggle.pointer-focus:focus-visible { outline: none; }
+      .menu-toggle-line {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        display: block;
+        width: 35px;
+        height: 1px;
+        background: currentColor;
+        transition: transform 250ms cubic-bezier(.2, .6, .3, 1), width 250ms cubic-bezier(.2, .6, .3, 1);
+        transform-origin: center;
+      }
+      .menu-toggle-line:first-child { transform: translateY(-5.5px); }
+      .menu-toggle-line:last-child { transform: translateY(5.5px); }
+
+      .mobile-menu {
+        position: fixed;
+        z-index: 40;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding-top: 91.34375px;
+        color: var(--lime);
+        background: var(--dark);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: visibility 600ms cubic-bezier(.4, 0, .2, 1), opacity 400ms cubic-bezier(.4, 0, .2, 1);
+      }
+      .mobile-menu a {
+        color: inherit;
+        font: 500 8.5vmin/1 InterTight, Arial, sans-serif;
+        text-decoration: none;
+        transform: translateY(20px);
+        transition: transform 600ms cubic-bezier(.4, 0, .2, 1);
+      }
+      body.menu-open { overflow: hidden; }
+      body.menu-open .site-header { color: var(--lime); background: var(--dark); }
+      body.menu-open .menu-toggle-line:first-child { width: 28px; transform: translateX(3.5px) rotate(-135deg); }
+      body.menu-open .menu-toggle-line:last-child { width: 28px; transform: translateX(3.5px) rotate(135deg); }
+      body.menu-open .mobile-menu { opacity: 1; visibility: visible; pointer-events: auto; }
+      body.menu-open .mobile-menu a { transform: translateY(0); }
+
+      .bright-section { padding: 91.34375px 0 0; }
+      .project-grid,
+      .related-grid,
+      .footer-grid {
+        display: grid;
+        grid-template-columns:
+          max(0px, calc(6vw - 11px))
+          repeat(8, minmax(0, 1fr))
+          max(0px, calc(6vw - 11px));
+        column-gap: 11px;
+        row-gap: 11px;
+        width: 100%;
+        margin: 0;
+      }
+      .project-grid { grid-template-rows: repeat(177, minmax(24px, auto)); }
+      .project-block,
+      .project-text,
+      .project-media { display: contents; }
+      .project-block.reveal { opacity: 1; transform: none; transition: none; }
+
+      .page-heading {
+        grid-area: 1 / 2 / 4 / 10;
+        z-index: 2;
+        align-self: start;
+        margin: 0;
+        font-size: calc((2.5 - 1) * calc(.012 * min(100vh, 900px)) + 1rem);
+        line-height: 1.316;
+      }
+      .project-intro,
+      .project-date,
+      .credits,
+      .video-wrap,
+      .media { min-width: 0; margin: 0; }
+      .project-intro { align-self: start; }
+      .project-title {
+        margin: 0 0 .28em;
+        font-size: calc((4.31 - 1) * calc(.012 * min(100vh, 900px)) + 1rem);
+        line-height: .71;
+      }
+      .project-description {
+        font-size: calc((1.57 - 1) * calc(.012 * min(100vh, 900px)) + 1rem);
+        line-height: 1.22;
+      }
+      .project-date {
+        align-self: start;
+        font-size: calc((1.78 - 1) * calc(.012 * min(100vh, 900px)) + 1rem);
+        line-height: .95;
+      }
+      .credits { align-self: start; font-size: 15px; line-height: 1.22; }
+      .credits p { margin: 0 0 1.2em; }
+      .video-wrap { align-self: center; width: 100%; height: auto; aspect-ratio: 16 / 9; }
+      .media {
+        align-self: center;
+        justify-self: center;
+        width: 100%;
+        height: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        background: transparent;
+      }
+      .white-media .white-image-three { grid-column: auto; }
+
+      .project-block:nth-of-type(1) .project-intro { grid-area: 4 / 2 / 14 / 10; z-index: 3; }
+      .project-block:nth-of-type(1) .video-wrap { grid-area: 13 / 2 / 21 / 10; z-index: 6; }
+      .project-block:nth-of-type(1) .project-date { grid-area: 21 / 2 / 24 / 10; z-index: 5; }
+      .project-block:nth-of-type(1) .credits { grid-area: 24 / 2 / 28 / 10; z-index: 4; }
+
+      .project-block:nth-of-type(2) .project-intro { grid-area: 30 / 2 / 42 / 10; z-index: 5; }
+      .project-block:nth-of-type(2) .video-wrap { grid-area: 42 / 2 / 50 / 10; z-index: 12; align-self: start; }
+      .project-block:nth-of-type(2) .project-date { grid-area: 49 / 2 / 56 / 10; z-index: 7; }
+      .project-block:nth-of-type(2) .credits { grid-area: 53 / 2 / 61 / 10; z-index: 6; }
+
+      .project-block:nth-of-type(3) .project-intro { grid-area: 63 / 2 / 73 / 10; z-index: 4; }
+      .project-block:nth-of-type(3) .media:nth-child(1) { grid-area: 72 / 2 / 78 / 10; z-index: 13; }
+      .project-block:nth-of-type(3) .media:nth-child(2) { grid-area: 78 / 2 / 84 / 10; z-index: 19; }
+      .project-block:nth-of-type(3) .project-date { grid-area: 84 / 2 / 87 / 10; z-index: 6; }
+      .project-block:nth-of-type(3) .credits { grid-area: 87 / 2 / 98 / 10; z-index: 5; }
+
+      .project-block:nth-of-type(4) .project-intro { grid-area: 100 / 2 / 112 / 10; z-index: 5; }
+      .project-block:nth-of-type(4) .media:nth-child(1) { grid-area: 109 / 2 / 115 / 10; z-index: 14; }
+      .project-block:nth-of-type(4) .media:nth-child(2) { grid-area: 115 / 2 / 121 / 10; z-index: 18; }
+      .project-block:nth-of-type(4) .project-date { grid-area: 121 / 2 / 124 / 10; z-index: 8; }
+      .project-block:nth-of-type(4) .credits { grid-area: 124 / 2 / 134 / 10; z-index: 6; }
+
+      .project-block:nth-of-type(5) .project-intro { grid-area: 136 / 2 / 148 / 10; z-index: 6; }
+      .project-block:nth-of-type(5) .media:nth-child(1) { grid-area: 145 / 2 / 151 / 10; z-index: 15; }
+      .project-block:nth-of-type(5) .media:nth-child(2) { grid-area: 151 / 2 / 157 / 10; z-index: 16; }
+      .project-block:nth-of-type(5) .media:nth-child(3) { grid-area: 157 / 2 / 163 / 10; z-index: 17; }
+      .project-block:nth-of-type(5) .project-date { grid-area: 163 / 2 / 166 / 10; z-index: 9; }
+      .project-block:nth-of-type(5) .credits { grid-area: 166 / 2 / 177 / 10; z-index: 7; }
+
+      .related-grid { grid-template-rows: repeat(53, minmax(24px, auto)); }
+      .work-marquee {
+        grid-area: 1 / 2 / 5 / 10;
+        align-self: center;
+        margin: 0;
+        padding: 3% 0;
+      }
+      .wave-track { min-height: 97px; gap: 26px; }
+      .wave-word { font-size: calc((4 - 1) * calc(.012 * min(100vh, 900px)) + 1rem); }
+      .related-grid > a { width: 100%; height: 100%; margin: 0; }
+      .related-image { width: 100%; height: 100%; margin: 0; }
+      .related-label {
+        align-self: start;
+        justify-self: stretch;
+        margin: 0;
+        font-size: 16px;
+        text-align: center;
+      }
+      .dop-label { grid-area: 6 / 4 / 7 / 8; z-index: 16; }
+      .related-dop { grid-area: 7 / 3 / 21 / 9; z-index: 17; }
+      .editorial-label { grid-area: 22 / 4 / 23 / 8; z-index: 14; }
+      .related-editorial { grid-area: 23 / 3 / 37 / 9; z-index: 8; }
+      .branded-label { grid-area: 38 / 4 / 39 / 8; z-index: 15; }
+      .related-branded { grid-area: 39 / 3 / 53 / 9; z-index: 11; }
+
+      footer { min-height: 0; padding: 0; }
+      .footer-grid { grid-template-rows: repeat(5, minmax(24px, auto)); }
+      .footer-name,
+      .footer-email,
+      .footer-socials { align-self: start; justify-self: stretch; margin: 0; white-space: normal; }
+      .footer-socials { grid-area: 1 / 2 / 2 / 10; font-size: 24px; }
+      .footer-email { grid-area: 2 / 2 / 4 / 10; font-size: 32px; }
+      .footer-name { grid-area: 4 / 2 / 6 / 10; font-size: 28px; }
+    }
+    @supports (height: 100dvh) {
+      @media (max-width: 767px) { .mobile-menu { min-height: 100dvh; } }
     }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .reveal { opacity: 1; transform: none; transition: none; } }
   </style>
@@ -123,48 +288,72 @@
 <body>
   <header class="site-header">
     <a class="site-title" href="../index.html">Portfolio 2024</a>
-    <a class="work-link" href="../work/index.html">Work</a>
+    <a class="desktop-work" href="../work/index.html">Work</a>
+    <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span class="menu-toggle-line" aria-hidden="true"></span>
+      <span class="menu-toggle-line" aria-hidden="true"></span>
+    </button>
   </header>
+
+  <nav class="mobile-menu" id="mobile-menu" aria-hidden="true" aria-label="Mobile navigation">
+    <a href="../work/index.html">Work</a>
+  </nav>
 
   <main>
     <section class="bright-section">
       <div class="project-grid">
         <h1 class="page-heading reveal">Short form Films</h1>
 
-        <article class="project-intro moving-intro reveal"><h2 class="project-title">mOVING oN (dir)</h2><p class="project-description">Phil and Marie confront the complexities of their relationship, grappling with the choice to either fight for their love or accept that it's time to let go. (First Short)</p></article>
-        <div class="video-wrap moving-video reveal"><iframe src="https://player.vimeo.com/video/791573982?app_id=122963" title="Moving On" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
-        <p class="project-date moving-date reveal">Project Date: April 21 2021<br>Location: New York</p>
-        <div class="credits moving-credits reveal"><p>Starring: Emily Ann Banks and Jaskuirat Ghotra</p><p>Producer: Keven Mema<br>Director and writer: Keven Mema<br>Director of Photography: Keven Mema</p><p>PA: John Bugajski &amp; Matthew Henderson</p></div>
+        <section class="project-block reveal">
+          <div class="project-text">
+            <article class="project-intro"><h2 class="project-title">mOVING oN (dir)</h2><p class="project-description">Phil and Marie confront the complexities of their relationship, grappling with the choice to either fight for their love or accept that it's time to let go. (First Short)</p></article>
+            <p class="project-date">Project Date: April 21 2021<br>Location: New York</p>
+            <div class="credits"><p>Starring: Emily Ann Banks and Jaskuirat Ghotra</p><p>Producer: Keven Mema<br>Director and writer: Keven Mema<br>Director of Photography: Keven Mema</p><p>PA: John Bugajski &amp; Matthew Henderson</p></div>
+          </div>
+          <div class="project-media"><div class="video-wrap"><iframe src="https://player.vimeo.com/video/791573982?app_id=122963" title="Moving On" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div></div>
+        </section>
 
-        <article class="project-intro addictive-intro reveal"><h2 class="project-title">Dudley williams - ADDICTIVE PERSONALITIES (dir)</h2><p class="project-description">As Dudley grapples with the suspicion that his girlfriend is cheating, he spirals into a whirlwind of jealousy and heartbreak, captured through out in the music video.</p></article>
-        <div class="video-wrap addictive-video reveal"><iframe src="https://www.youtube.com/embed/FwRbAJShcRA?feature=oembed" title="Dudley Williams - Addictive Personalities" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-        <p class="project-date addictive-date reveal">Project Date: november 2022<br>Location: New York</p>
-        <div class="credits addictive-credits reveal"><p>Producer, writer and Director: Keven Mema</p><p>Assistant Director: Ginevra Zanoni</p><p>Director of Photography: Christopher Albero</p><p>Production Design: Ziyu Luo</p><p>Color Grade: Keven Mema</p><p>Gaffer: Bernardo Lechi</p><p>Key Grip: John Bugajski</p><p>Sound Mixer: Nicholas Trotta</p></div>
+        <section class="project-block reveal">
+          <div class="project-text">
+            <article class="project-intro"><h2 class="project-title">Dudley williams - ADDICTIVE PERSONALITIES (dir)</h2><p class="project-description">As Dudley grapples with the suspicion that his girlfriend is cheating, he spirals into a whirlwind of jealousy and heartbreak, captured through out in the music video.</p></article>
+            <p class="project-date">Project Date: november 2022<br>Location: New York</p>
+            <div class="credits"><p>Producer, writer and Director: Keven Mema</p><p>Assistant Director: Ginevra Zanoni</p><p>Director of Photography: Christopher Albero</p><p>Production Design: Ziyu Luo</p><p>Color Grade: Keven Mema</p><p>Gaffer: Bernardo Lechi</p><p>Key Grip: John Bugajski</p><p>Sound Mixer: Nicholas Trotta</p></div>
+          </div>
+          <div class="project-media"><div class="video-wrap"><iframe src="https://www.youtube.com/embed/FwRbAJShcRA?feature=oembed" title="Dudley Williams - Addictive Personalities" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></div>
+        </section>
 
-        <article class="project-intro burning-intro reveal"><h2 class="project-title">Burning Desire (dIR)</h2><p class="project-description">Earn and Desire finds themselves at the tail end of their relationship as alcoholism and promiscuous behavior pits them against each other and their perception of each other.</p></article>
-        <img class="media contain burning-image-one reveal" src="images/burning-1.webp" alt="Burning Desire still">
-        <img class="media contain burning-image-two reveal" src="images/burning-2.webp" alt="Burning Desire still">
-        <p class="project-date burning-date reveal">Project Date: January 2023<br>Location: New York</p>
-        <div class="credits burning-credits reveal"><p>Writer, Director, Producer: Keven Mema</p><p>Assistant Director: Natalie Martino</p><p>Director Of Photography: Christopher Albero</p><p>1st Assistant Camera: Bernardo Lechi</p><p>2nd Assistant Camera: Sebastian Aguirre</p><p>Gaffer: Jishu Chowdhury</p><p>Grip: John Bugajski</p><p>Best Boy: Asem Mohamed</p><p>Production Designer: Ziyu Luo</p><p>Sound Mixer: Nick Trotta</p><p>Editor, Colorist &amp; Sound Mix: Keven Mema</p></div>
+        <section class="project-block reveal">
+          <div class="project-text">
+            <article class="project-intro"><h2 class="project-title">Burning Desire (dIR)</h2><p class="project-description">Earn and Desire finds themselves at the tail end of their relationship as alcoholism and promiscuous behavior pits them against each other and their perception of each other.</p></article>
+            <p class="project-date">Project Date: January 2023<br>Location: New York</p>
+            <div class="credits"><p>Writer, Director, Producer: Keven Mema</p><p>Assistant Director: Natalie Martino</p><p>Director Of Photography: Christopher Albero</p><p>1st Assistant Camera: Bernardo Lechi</p><p>2nd Assistant Camera: Sebastian Aguirre</p><p>Gaffer: Jishu Chowdhury</p><p>Grip: John Bugajski</p><p>Best Boy: Asem Mohamed</p><p>Production Designer: Ziyu Luo</p><p>Sound Mixer: Nick Trotta</p><p>Editor, Colorist &amp; Sound Mix: Keven Mema</p></div>
+          </div>
+          <div class="project-media"><img class="media contain" src="images/burning-1.webp" alt="Burning Desire still"><img class="media contain" src="images/burning-2.webp" alt="Burning Desire still"></div>
+        </section>
 
-        <article class="project-intro ouija-intro reveal"><h2 class="project-title">ouija to hell (DIR)</h2><p class="project-description">Seb and Marie’s date night takes a dark turn when a harmless game of Ouija unleashes a malevolent force, dragging them into a night of terror where the boundary between the living and the dead shatters.</p></article>
-        <img class="media contain ouija-image-one reveal" src="images/ouija-1.webp" alt="Ouija to Hell still">
-        <img class="media contain ouija-image-two reveal" src="images/ouija-2.webp" alt="Ouija to Hell still">
-        <p class="project-date ouija-date reveal">Project Date: July 2022<br>Location: New York</p>
-        <div class="credits ouija-credits reveal"><p>Writer, Director, Producer: Keven Mema</p><p>Assistant Director: Ginevra Zanoni</p><p>Director Of Photography: Bernardo Lechi</p><p>1st Assistant Camera: Christopher Albero</p><p>Gaffer: Sean Conover</p><p>Grip: John Bugajski</p><p>Best Boy: Asem Mohamed</p><p>Production Designer: Ziyu Luo</p><p>Sound Mixer: Nick Trotta</p><p>Editor, Colorist &amp; Sound Mix: Keven Mema</p></div>
+        <section class="project-block reveal">
+          <div class="project-text">
+            <article class="project-intro"><h2 class="project-title">ouija to hell (DIR)</h2><p class="project-description">Seb and Marie’s date night takes a dark turn when a harmless game of Ouija unleashes a malevolent force, dragging them into a night of terror where the boundary between the living and the dead shatters.</p></article>
+            <p class="project-date">Project Date: July 2022<br>Location: New York</p>
+            <div class="credits"><p>Writer, Director, Producer: Keven Mema</p><p>Assistant Director: Ginevra Zanoni</p><p>Director Of Photography: Bernardo Lechi</p><p>1st Assistant Camera: Christopher Albero</p><p>Gaffer: Sean Conover</p><p>Grip: John Bugajski</p><p>Best Boy: Asem Mohamed</p><p>Production Designer: Ziyu Luo</p><p>Sound Mixer: Nick Trotta</p><p>Editor, Colorist &amp; Sound Mix: Keven Mema</p></div>
+          </div>
+          <div class="project-media"><img class="media contain" src="images/ouija-1.webp" alt="Ouija to Hell still"><img class="media contain" src="images/ouija-2.webp" alt="Ouija to Hell still"></div>
+        </section>
 
-        <article class="project-intro white-intro reveal"><h2 class="project-title">White gold(DIR)</h2><p class="project-description">A couple’s planned home robbery takes an unexpected turn when they realize the target belongs to an ex-lover, forcing them into a tense confrontation about commitment, trust, and the ghosts of their past.</p></article>
-        <img class="media contain white-image-one reveal" src="images/white-gold-1.webp" alt="White Gold production photograph">
-        <img class="media contain white-image-two reveal" src="images/white-gold-2.webp" alt="White Gold production photograph">
-        <img class="media contain white-image-three reveal" src="images/white-gold-3.webp" alt="White Gold production photograph">
-        <p class="project-date white-date reveal">Project Date: February 2022<br>Location: New York</p>
-        <div class="credits white-credits reveal"><p>Writer, Director, Producer: Keven Mema</p><p>Assistant Director: Bernardo Lechi</p><p>Director Of Photography: Marian Fragosob</p><p>1st Assistant Camera: Sean Conover</p><p>Gaffer: Christopher Albero</p><p>Grip: John Bugajski</p><p>Best Boy: Asem Mohamed</p><p>Production Designer: Sebastian</p><p>Sound Mixer: Nick Trotta</p><p>Editor, Colorist &amp; Sound Mix: Keven Mema</p></div>
+        <section class="project-block reveal">
+          <div class="project-text">
+            <article class="project-intro"><h2 class="project-title">White gold(DIR)</h2><p class="project-description">A couple’s planned home robbery takes an unexpected turn when they realize the target belongs to an ex-lover, forcing them into a tense confrontation about commitment, trust, and the ghosts of their past.</p></article>
+            <p class="project-date">Project Date: February 2022<br>Location: New York</p>
+            <div class="credits"><p>Writer, Director, Producer: Keven Mema</p><p>Assistant Director: Bernardo Lechi</p><p>Director Of Photography: Marian Fragosob</p><p>1st Assistant Camera: Sean Conover</p><p>Gaffer: Christopher Albero</p><p>Grip: John Bugajski</p><p>Best Boy: Asem Mohamed</p><p>Production Designer: Sebastian</p><p>Sound Mixer: Nick Trotta</p><p>Editor, Colorist &amp; Sound Mix: Keven Mema</p></div>
+          </div>
+          <div class="project-media white-media"><img class="media contain" src="images/white-gold-1.webp" alt="White Gold production photograph"><img class="media contain" src="images/white-gold-2.webp" alt="White Gold production photograph"><img class="media contain white-image-three" src="images/white-gold-3.webp" alt="White Gold production photograph"></div>
+        </section>
       </div>
     </section>
 
     <section class="related-section">
       <div class="related-grid">
-        <div class="work-marquee reveal"><a href="../work/index.html" aria-label="Return to Work"><svg fill="currentColor" aria-hidden="true"><path id="work-wave" fill="none" stroke="transparent" d="M-400,54 L-400,54 S-133,84 0,84 S267,54 400,54 S667,84 800,84 S1067,54 1200,54 S1467,84 1600,84 S1867,54 2000,54"></path><text><textPath id="work-wave-text" href="#work-wave" startOffset="-110"><tspan x="0">WORK</tspan><tspan x="190">WORK</tspan><tspan x="380">WORK</tspan><tspan x="570">WORK</tspan><tspan x="760">WORK</tspan><tspan x="950">WORK</tspan><tspan x="1140">WORK</tspan><tspan x="1330">WORK</tspan><tspan x="1520">WORK</tspan><tspan x="1710">WORK</tspan><tspan x="1900">WORK</tspan></textPath></text></svg></a></div>
+        <div class="work-marquee reveal"><a href="../work/index.html" aria-label="Return to Work"><span class="wave-track" aria-hidden="true"><span class="wave-word">WORK</span><span class="wave-word">WORK</span><span class="wave-word">WORK</span><span class="wave-word">WORK</span><span class="wave-word">WORK</span><span class="wave-word">WORK</span><span class="wave-word">WORK</span><span class="wave-word">WORK</span><span class="wave-word">WORK</span><span class="wave-word">WORK</span><span class="wave-word">WORK</span><span class="wave-word">WORK</span></span></a></div>
         <a class="related-dop" href="../short-form-films/index.html"><img class="related-image" src="images/related-dop.webp" alt="D.O.P Showcase"></a>
         <p class="related-label dop-label"><a href="../short-form-films/index.html">D.O.P Showcase</a></p>
         <a class="related-editorial" href="../editorial-photography/index.html"><img class="related-image" src="images/related-editorial.webp" alt="Editorial Photography"></a>
@@ -179,15 +368,56 @@
 
   <script>
     const marquee = document.querySelector('.work-marquee');
-    const pathText = document.querySelector('#work-wave-text');
-    let offset = -110;
+    const waveTrack = marquee.querySelector('.wave-track');
+    const waveWords = [...waveTrack.querySelectorAll('.wave-word')];
+    let waveOffset = 0;
+    let wavePreviousTime;
     let paused = false;
     marquee.addEventListener('mouseenter', () => { paused = true; });
     marquee.addEventListener('mouseleave', () => { paused = false; });
-    function animateWork() { if (!paused && !matchMedia('(prefers-reduced-motion: reduce)').matches) { offset += .5; if (offset >= 80) offset -= 190; pathText.setAttribute('startOffset', offset); } requestAnimationFrame(animateWork); }
+    function animateWork(time) {
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (wavePreviousTime !== undefined && !paused && !reduced) {
+        waveOffset += (time - wavePreviousTime) * .035;
+        const styles = getComputedStyle(waveTrack);
+        const period = waveWords[0].offsetWidth + parseFloat(styles.columnGap || styles.gap || 0);
+        if (period && waveOffset >= period) waveOffset -= period;
+      }
+      waveTrack.style.transform = `translate3d(${-waveOffset}px, 0, 0)`;
+      waveWords.forEach((word) => {
+        const center = word.getBoundingClientRect().left + (word.offsetWidth / 2);
+        const phase = (center / Math.max(innerWidth, 1)) * Math.PI * 2;
+        word.style.transform = reduced ? 'none' : `translate3d(0, ${Math.sin(phase) * 15}px, 0) rotate(${Math.cos(phase) * 3}deg)`;
+      });
+      wavePreviousTime = time;
+      requestAnimationFrame(animateWork);
+    }
     requestAnimationFrame(animateWork);
     const observer = new IntersectionObserver((entries) => entries.forEach((entry) => entry.target.classList.toggle('visible', entry.isIntersecting)), { threshold: .06, rootMargin: '0px 0px -5% 0px' });
     document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
+
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+
+    function setMenuOpen(open) {
+      document.body.classList.toggle('menu-open', open);
+      menuToggle.setAttribute('aria-expanded', String(open));
+      menuToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      mobileMenu.setAttribute('aria-hidden', String(!open));
+    }
+
+    menuToggle.addEventListener('click', () => {
+      setMenuOpen(!document.body.classList.contains('menu-open'));
+    });
+    menuToggle.addEventListener('pointerdown', () => menuToggle.classList.add('pointer-focus'));
+    document.querySelector('.site-title').addEventListener('click', () => setMenuOpen(false));
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Tab') menuToggle.classList.remove('pointer-focus');
+      if (event.key === 'Escape') setMenuOpen(false);
+    });
+    window.matchMedia('(min-width: 768px)').addEventListener('change', (event) => {
+      if (event.matches) setMenuOpen(false);
+    });
   </script>
 </body>
 </html>
