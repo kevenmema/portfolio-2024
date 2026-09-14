@@ -257,6 +257,31 @@
       }
     }
 
+    @media (min-width: 768px) {
+      .site-header {
+        height: clamp(78px, 6.25vw, 128px);
+        min-height: 78px;
+        padding: 0 2vw;
+      }
+    }
+
+    @media (min-width: 768px) and (max-width: 1100px) {
+      .work-page { padding-top: clamp(118px, 13vw, 143px); }
+      .work-entry {
+        grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
+        gap: clamp(28px, 4vw, 44px);
+        margin-bottom: clamp(100px, 12vw, 132px);
+      }
+      .work-heading {
+        margin-bottom: clamp(20px, 2.2vw, 28px);
+        font-size: clamp(42px, 5.4vw, 58px);
+        line-height: .92;
+      }
+      .work-copy,
+      .view-link { font-size: clamp(18px, 2vw, 22px); }
+      .work-image { max-height: 72vh; }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .source-reveal { opacity: 1; transform: none; transition: none; }
