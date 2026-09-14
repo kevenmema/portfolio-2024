@@ -38,57 +38,35 @@
       background: hsl(195 5% 11%);
     }
     .site-title { color: var(--accent); font: 700 1.6rem/1 AktivExtended, Arial, sans-serif; letter-spacing: .03em; text-decoration: none; }
-    .work-link { color: var(--accent); font: 500 2rem/1 InterTight, Arial, sans-serif; text-decoration: underline; text-decoration-thickness: .045em; text-underline-offset: .2em; }
+    .desktop-work { color: var(--accent); font: 500 2rem/1 InterTight, Arial, sans-serif; text-decoration: underline; text-decoration-thickness: .045em; text-underline-offset: .2em; }
+    .menu-toggle,
+    .mobile-menu { display: none; }
 
     .work-page { padding-top: calc(4vw + 4rem); }
     .work-composition {
-      display: grid;
-      grid-template-columns: repeat(24, minmax(0, 1fr));
-      grid-template-rows: repeat(151, minmax(var(--row), auto));
-      gap: var(--gap);
+      display: block;
       width: var(--site-width);
       margin: 0 auto;
     }
     .page-title {
-      grid-area: 1 / 2 / 3 / 13;
-      z-index: 2;
-      align-self: start;
-      margin: 0;
+      margin: 0 0 clamp(64px, 8vw, 128px);
       color: var(--accent);
       font: italic 400 2.5rem/1.4 MinionCondensed, Georgia, serif;
     }
-    .work-image { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; }
-    .work-copy { align-self: start; color: white; font: italic 500 1.57rem/1.22 InterTight, Arial, sans-serif; }
+    .work-entry {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(0, 1.3fr);
+      align-items: center;
+      gap: clamp(42px, 7vw, 120px);
+      margin-bottom: clamp(130px, 14vw, 240px);
+    }
+    .work-entry:last-child { margin-bottom: clamp(90px, 10vw, 170px); }
+    .work-entry-copy { min-width: 0; }
+    .work-image { display: block; width: 100%; height: auto; max-height: 82vh; object-fit: contain; object-position: 50% 50%; }
+    .work-copy { color: white; font: italic 500 clamp(22px, 1.65vw, 27px)/1.22 InterTight, Arial, sans-serif; }
     .work-copy p { margin: 0; }
-    .work-heading { align-self: start; margin: 0; color: var(--accent); font-family: InterTight, Arial, sans-serif; font-size: min(calc(3.31 * 1.2vw + 1rem), 4.622rem); font-style: normal; font-weight: 700; line-height: .9; letter-spacing: 0; text-transform: uppercase; white-space: normal; }
-    .view-link { align-self: start; width: max-content; padding: 0; color: var(--accent); background: none; font: 500 1.57rem/1.22 InterTight, Arial, sans-serif; text-decoration: underline; text-decoration-thickness: .06em; text-underline-offset: .12em; }
-
-    .director-image { grid-area: 4 / 12 / 22 / 26; }
-    .director-image { object-fit: contain; }
-    .director-copy { grid-area: 11 / 2 / 15 / 11; }
-    .director-heading { grid-area: 7 / 2 / 11 / 10; }
-    .director-link { grid-area: 15 / 2 / 16 / 10; }
-
-    .short-image { grid-area: 29 / 12 / 44 / 26; }
-    .short-copy { grid-area: 35 / 2 / 40 / 11; }
-    .short-heading { grid-area: 30 / 2 / 35 / 9; }
-    .short-link { grid-area: 40 / 2 / 41 / 10; }
-
-    .editorial-image { grid-area: 50 / 12 / 83 / 26; }
-    .editorial-copy { grid-area: 60 / 2 / 67 / 11; }
-    .editorial-heading { grid-area: 56 / 2 / 60 / 14; }
-    .editorial-link { grid-area: 67 / 2 / 68 / 11; }
-
-    .branded-image { grid-area: 91 / 12 / 127 / 26; }
-    .branded-copy { grid-area: 103 / 2 / 109 / 11; }
-    .branded-heading { grid-area: 98 / 2 / 103 / 12; }
-    .branded-link { grid-area: 109 / 2 / 110 / 11; }
-
-    .demo-heading { grid-area: 129 / 2 / 131 / 12; }
-    .demo-copy { grid-area: 131 / 2 / 132 / 11; }
-    .demo-link { grid-area: 133 / 2 / 134 / 11; }
-    .demo-image { grid-area: 131 / 11 / 144 / 26; }
-    .demo-image { object-fit: contain; }
+    .work-heading { margin: 0 0 clamp(26px, 2.4vw, 42px); color: var(--accent); font-family: InterTight, Arial, sans-serif; font-size: clamp(52px, 5vw, 76px); font-style: normal; font-weight: 700; line-height: .9; letter-spacing: 0; text-transform: uppercase; overflow-wrap: anywhere; }
+    .view-link { display: inline-block; width: max-content; margin-top: clamp(24px, 2.5vw, 42px); padding: 0; color: var(--accent); background: none; font: 500 clamp(22px, 1.65vw, 27px)/1.22 InterTight, Arial, sans-serif; text-decoration: underline; text-decoration-thickness: .06em; text-underline-offset: .12em; }
 
     .source-reveal { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
     .source-reveal.visible { opacity: 1; transform: none; }
@@ -97,29 +75,186 @@
     .footer-grid { display: grid; grid-template-columns: repeat(24, minmax(0, 1fr)); grid-template-rows: repeat(6, minmax(var(--row), auto)); gap: var(--gap); width: var(--site-width); margin: 0 auto; }
     .footer-name { grid-area: 1 / 2 / 3 / 14; margin: 0; font: 500 2.74rem/1.22 InterTight, Arial, sans-serif; }
     .footer-email { grid-area: 2 / 2 / 4 / 14; margin: 0; font: italic 400 2.5rem/1.4 MinionCondensed, Georgia, serif; }
-    .footer-socials { grid-area: 6 / 14 / 7 / 26; align-self: end; justify-self: end; margin: 0; font: 500 2.74rem/1.22 InterTight, Arial, sans-serif; white-space: nowrap; }
+    .footer-socials { grid-area: 6 / 14 / 7 / 25; align-self: end; justify-self: end; margin: 0; font: 500 2.74rem/1.22 InterTight, Arial, sans-serif; white-space: nowrap; }
     footer a { color: inherit; text-decoration: none; }
 
     @media (max-width: 767px) {
-      :root { --site-width: 88vw; }
-      .site-header { height: 72px; padding: 0 6vw; }
-      .site-title { font-size: 17px; }
-      .work-link { font-size: 20px; }
-      .work-page { padding-top: 98px; }
-      .work-composition { display: block; width: 88vw; }
-      .page-title { margin: 0 0 52px; font-size: 11vw; }
-      .work-item { margin-bottom: 18px; }
-      .work-image { height: auto; max-height: 75vh; object-fit: cover; }
-      .work-copy { margin: 18px 0 28px; font-size: 21px; }
-      .work-heading { margin: 0 0 8px; font-size: clamp(48px, 13vw, 74px); line-height: .9; white-space: normal; }
-      .view-link { display: inline-block; margin-bottom: 90px; font-size: 20px; }
-      .demo-image { margin-top: 18px; }
-      footer { padding: 7vw 0; }
-      .footer-grid { display: block; width: 88vw; }
-      .footer-name, .footer-email, .footer-socials { margin: 0 0 20px; white-space: normal; }
-      .footer-name { font-size: 28px; }
-      .footer-email { font-size: 32px; }
-      .footer-socials { font-size: 24px; }
+      :root { --site-width: 100vw; --row: 24px; }
+
+      .site-header {
+        height: 91.34375px;
+        padding: 0 6vw;
+        font-family: MinionCondensed, Georgia, serif;
+        transition: color 400ms cubic-bezier(.4, 0, .2, 1), background-color 400ms cubic-bezier(.4, 0, .2, 1);
+      }
+      .site-title {
+        font-family: MinionCondensed, Georgia, serif;
+        font-size: calc((2 - 1) * calc(.012 * min(100vh, 900px)) + 1rem);
+        font-weight: 400;
+        line-height: 1.4;
+        letter-spacing: 0;
+      }
+      .site-header .desktop-work { display: none; }
+
+      .menu-toggle {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 35px;
+        height: 35px;
+        padding: 0;
+        color: var(--accent);
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+      }
+      .menu-toggle:focus { outline: none; }
+      .menu-toggle:focus-visible { outline: 1px solid currentColor; outline-offset: 4px; }
+      .menu-toggle.pointer-focus:focus-visible { outline: none; }
+      .menu-toggle-line {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        display: block;
+        width: 35px;
+        height: 1px;
+        background: currentColor;
+        transition: transform 250ms cubic-bezier(.2, .6, .3, 1), width 250ms cubic-bezier(.2, .6, .3, 1);
+        transform-origin: center;
+      }
+      .menu-toggle-line:first-child { transform: translateY(-5.5px); }
+      .menu-toggle-line:last-child { transform: translateY(5.5px); }
+
+      .mobile-menu {
+        position: fixed;
+        z-index: 40;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: 91.34375px;
+        color: var(--accent);
+        background: hsl(195 5% 11%);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: visibility 600ms cubic-bezier(.4, 0, .2, 1), opacity 400ms cubic-bezier(.4, 0, .2, 1);
+      }
+      .mobile-menu a {
+        color: inherit;
+        font: 500 8.5vmin/1 InterTight, Arial, sans-serif;
+        text-decoration: underline;
+        text-decoration-thickness: .045em;
+        text-underline-offset: .2em;
+        transform: translateY(20px);
+        transition: transform 600ms cubic-bezier(.4, 0, .2, 1);
+      }
+      body.menu-open { overflow: hidden; }
+      body.menu-open .menu-toggle-line:first-child { width: 28px; transform: translateX(3.5px) rotate(-135deg); }
+      body.menu-open .menu-toggle-line:last-child { width: 28px; transform: translateX(3.5px) rotate(135deg); }
+      body.menu-open .mobile-menu { opacity: 1; visibility: visible; pointer-events: auto; }
+      body.menu-open .mobile-menu a { transform: translateY(0); }
+
+      .work-page { padding-top: 91.34375px; }
+      .work-composition,
+      .footer-grid {
+        display: grid;
+        grid-template-columns:
+          max(0px, calc(6vw - 11px))
+          repeat(8, minmax(0, 1fr))
+          max(0px, calc(6vw - 11px));
+        column-gap: 11px;
+        row-gap: 11px;
+        width: 100%;
+        margin: 0;
+      }
+      .work-composition { grid-template-rows: repeat(134, minmax(24px, auto)); }
+      .work-entry,
+      .work-entry-copy { display: contents; }
+
+      .page-title {
+        z-index: 1;
+        grid-area: 1 / 2 / 3 / 10;
+        margin: 0;
+        color: var(--accent);
+        font-size: calc((2.5 - 1) * calc(.012 * min(100vh, 900px)) + 1rem);
+        line-height: 1.316;
+      }
+      .work-heading {
+        align-self: start;
+        margin: 0;
+        color: var(--accent);
+        font-size: calc((4.31 - 1) * calc(.012 * min(100vh, 900px)) + 1rem);
+        line-height: .71;
+        overflow-wrap: normal;
+      }
+      .work-copy {
+        align-self: start;
+        margin: 0;
+        color: white;
+        font-size: calc((1.57 - 1) * calc(.012 * min(100vh, 900px)) + 1rem);
+        line-height: 1.22;
+      }
+      .view-link {
+        align-self: start;
+        margin: 0;
+        font-size: calc((1.57 - 1) * calc(.012 * min(100vh, 900px)) + 1rem);
+        line-height: 1.22;
+      }
+      .work-image {
+        align-self: stretch;
+        justify-self: stretch;
+        width: 100%;
+        height: 100%;
+        max-height: none;
+        margin: 0;
+        object-fit: cover;
+      }
+
+      .work-entry:nth-of-type(1) .work-heading { z-index: 8; grid-area: 3 / 2 / 6 / 10; }
+      .work-entry:nth-of-type(1) .work-image { z-index: 11; grid-area: 6 / 1 / 13 / 11; justify-self: center; width: 80%; object-fit: contain; }
+      .work-entry:nth-of-type(1) .work-copy { z-index: 9; grid-area: 13 / 2 / 18 / 10; }
+      .work-entry:nth-of-type(1) .view-link { z-index: 6; grid-area: 18 / 2 / 20 / 10; }
+
+      .work-entry:nth-of-type(2) .work-heading { z-index: 7; grid-area: 22 / 2 / 25 / 10; }
+      .work-entry:nth-of-type(2) .work-image { z-index: 1; grid-area: 25 / 2 / 33 / 10; }
+      .work-entry:nth-of-type(2) .work-copy { z-index: 8; grid-area: 33 / 2 / 40 / 10; }
+      .work-entry:nth-of-type(2) .view-link { z-index: 5; grid-area: 40 / 2 / 42 / 10; }
+
+      .work-entry:nth-of-type(3) .work-heading { z-index: 5; grid-area: 44 / 2 / 49 / 10; }
+      .work-entry:nth-of-type(3) .work-image { z-index: 2; grid-area: 49 / 2 / 69 / 10; }
+      .work-entry:nth-of-type(3) .work-copy { z-index: 9; grid-area: 69 / 2 / 78 / 10; }
+      .work-entry:nth-of-type(3) .view-link { z-index: 3; grid-area: 78 / 2 / 80 / 10; }
+
+      .work-entry:nth-of-type(4) .work-heading { z-index: 6; grid-area: 82 / 2 / 87 / 10; }
+      .work-entry:nth-of-type(4) .work-image { z-index: 0; grid-area: 87 / 2 / 107 / 10; }
+      .work-entry:nth-of-type(4) .work-copy { z-index: 10; grid-area: 108 / 2 / 114 / 10; }
+      .work-entry:nth-of-type(4) .view-link { z-index: 4; grid-area: 114 / 2 / 116 / 10; }
+
+      .work-entry:nth-of-type(5) .work-heading { z-index: 7; grid-area: 118 / 2 / 123 / 10; }
+      .work-entry:nth-of-type(5) .work-image { z-index: 12; grid-area: 120 / 2 / 126 / 10; object-fit: contain; }
+      .work-entry:nth-of-type(5) .work-copy { z-index: 11; grid-area: 126 / 2 / 132 / 10; }
+      .work-entry:nth-of-type(5) .view-link { z-index: 5; grid-area: 131 / 2 / 133 / 10; }
+
+      footer { min-height: 0; padding: 3vmax 0; }
+      .footer-grid { grid-template-rows: repeat(5, minmax(24px, auto)); }
+      .footer-name,
+      .footer-email,
+      .footer-socials { margin: 0; white-space: normal; }
+      .footer-name {
+        grid-area: 4 / 2 / 6 / 10;
+        font-size: calc((2.74 - 1) * calc(.012 * min(100vh, 900px)) + 1rem);
+      }
+      .footer-email {
+        grid-area: 2 / 2 / 4 / 10;
+        font-size: calc((2.5 - 1) * calc(.012 * min(100vh, 900px)) + 1rem);
+      }
+      .footer-socials {
+        grid-area: 1 / 2 / 2 / 10;
+        justify-self: start;
+        font-size: calc((1.57 - 1) * calc(.012 * min(100vh, 900px)) + 1rem);
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -131,37 +266,65 @@
 <body>
   <header class="site-header">
     <a class="site-title" href="../index.html">Portfolio 2024</a>
-    <a class="work-link" href="index.html" aria-current="page">Work</a>
+    <a class="desktop-work" href="index.html" aria-current="page">Work</a>
+    <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span class="menu-toggle-line" aria-hidden="true"></span>
+      <span class="menu-toggle-line" aria-hidden="true"></span>
+    </button>
   </header>
+
+  <nav class="mobile-menu" id="mobile-menu" aria-hidden="true" aria-label="Mobile navigation">
+    <a href="index.html" aria-current="page">Work</a>
+  </nav>
 
   <main class="work-page" id="top">
     <div class="work-composition">
       <h1 class="page-title source-reveal">Work</h1>
 
-      <img class="work-image work-item director-image source-reveal" src="images/director.webp" alt="Still from Keven Mema's directing work">
-      <div class="work-copy work-item director-copy source-reveal"><p>Here, you’ll explore my directorial journey. Where passion meets storytelling. Dive into a collection of projects that reflect my devotion to the art of filmmaking and the power of the visual narrative.</p></div>
-      <h2 class="work-heading work-item director-heading source-reveal">The Director</h2>
-      <a class="view-link work-item director-link source-reveal" href="../short-form-films-1/index.html">View projects</a>
+      <section class="work-entry">
+        <div class="work-entry-copy">
+          <h2 class="work-heading source-reveal">The Director</h2>
+          <div class="work-copy source-reveal"><p>Here, you’ll explore my directorial journey. Where passion meets storytelling. Dive into a collection of projects that reflect my devotion to the art of filmmaking and the power of the visual narrative.</p></div>
+          <a class="view-link source-reveal" href="../short-form-films-1/index.html">View projects</a>
+        </div>
+        <img class="work-image source-reveal" src="images/director.webp" alt="Still from Keven Mema's directing work">
+      </section>
 
-      <img class="work-image work-item short-image source-reveal" src="images/short-form.webp" alt="Still from a short-form film">
-      <div class="work-copy work-item short-copy source-reveal"><p>Here, you’ll find a collection of my passion projects that showcase my commitment to storytelling through film. Each short form film is a labor of love, capturing unique moments and emotions. I pour my heart into every frame, exploring diverse themes and styles that reflect my creative journey.</p></div>
-      <h2 class="work-heading work-item short-heading source-reveal">Short form FILMS (D.O.P)</h2>
-      <a class="view-link work-item short-link source-reveal" href="../short-form-films/index.html">View projects</a>
+      <section class="work-entry">
+        <div class="work-entry-copy">
+          <h2 class="work-heading source-reveal">Short form FILMS (D.O.P)</h2>
+          <div class="work-copy source-reveal"><p>Here, you’ll find a collection of my passion projects that showcase my commitment to storytelling through film. Each short form film is a labor of love, capturing unique moments and emotions. I pour my heart into every frame, exploring diverse themes and styles that reflect my creative journey.</p></div>
+          <a class="view-link source-reveal" href="../short-form-films/index.html">View projects</a>
+        </div>
+        <img class="work-image source-reveal" src="images/short-form.webp" alt="Still from a short-form film">
+      </section>
 
-      <img class="work-image work-item editorial-image source-reveal" src="images/editorial.webp" alt="Editorial photograph">
-      <div class="work-copy work-item editorial-copy source-reveal"><p>Here, you’ll find a curated collection of my visual photography, where each image captures a moment, a mood, and a narrative. My passion for photography drives me to explore diverse subjects and styles, whether it’s a vibrant fashion shoot or an intimate portrait. I strive to create compelling visuals that not only tell a story but also evoke emotion and inspire conversation.</p></div>
-      <h2 class="work-heading work-item editorial-heading source-reveal">EDITORIAL PHOTOGRAPHY</h2>
-      <a class="view-link work-item editorial-link source-reveal" href="../editorial-photography/index.html">View projects</a>
+      <section class="work-entry">
+        <div class="work-entry-copy">
+          <h2 class="work-heading source-reveal">EDITORIAL PHOTOGRAPHY</h2>
+          <div class="work-copy source-reveal"><p>Here, you’ll find a curated collection of my visual photography, where each image captures a moment, a mood, and a narrative. My passion for photography drives me to explore diverse subjects and styles, whether it’s a vibrant fashion shoot or an intimate portrait. I strive to create compelling visuals that not only tell a story but also evoke emotion and inspire conversation.</p></div>
+          <a class="view-link source-reveal" href="../editorial-photography/index.html">View projects</a>
+        </div>
+        <img class="work-image source-reveal" src="images/editorial.webp" alt="Editorial photograph">
+      </section>
 
-      <img class="work-image work-item branded-image source-reveal" src="images/branded.webp" alt="Still from branded social content">
-      <div class="work-copy work-item branded-copy source-reveal"><p>Here, you'll find a showcase of my work focused towards creating dynamic, engaging content that captures the essence of brands. I’m passionate about telling stories that resonate, using visuals and narratives tailored to each brand's unique voice.</p></div>
-      <h2 class="work-heading work-item branded-heading source-reveal">branded social content</h2>
-      <a class="view-link work-item branded-link source-reveal" href="../branded-social-content/index.html">View projects</a>
+      <section class="work-entry">
+        <div class="work-entry-copy">
+          <h2 class="work-heading source-reveal">branded social content</h2>
+          <div class="work-copy source-reveal"><p>Here, you'll find a showcase of my work focused towards creating dynamic, engaging content that captures the essence of brands. I’m passionate about telling stories that resonate, using visuals and narratives tailored to each brand's unique voice.</p></div>
+          <a class="view-link source-reveal" href="../branded-social-content/index.html">View projects</a>
+        </div>
+        <img class="work-image source-reveal" src="images/branded.webp" alt="Still from branded social content">
+      </section>
 
-      <h2 class="work-heading work-item demo-heading source-reveal">DEmo Reels</h2>
-      <div class="work-copy work-item demo-copy source-reveal"><p>Here, you'll find a showcase of my demo reels.</p></div>
-      <a class="view-link work-item demo-link source-reveal" href="../demo-reels/index.html">View projects</a>
-      <img class="work-image work-item demo-image source-reveal" src="images/demo-reels.webp" alt="Demo reel still">
+      <section class="work-entry">
+        <div class="work-entry-copy">
+          <h2 class="work-heading source-reveal">DEmo Reels</h2>
+          <div class="work-copy source-reveal"><p>Here, you'll find a showcase of my demo reels.</p></div>
+          <a class="view-link source-reveal" href="../demo-reels/index.html">View projects</a>
+        </div>
+        <img class="work-image source-reveal" src="images/demo-reels.webp" alt="Demo reel still">
+      </section>
     </div>
   </main>
 
@@ -178,6 +341,29 @@
       entries.forEach((entry) => entry.target.classList.toggle('visible', entry.isIntersecting));
     }, { threshold: 0.08, rootMargin: '0px 0px -5% 0px' });
     document.querySelectorAll('.source-reveal').forEach((element) => observer.observe(element));
+
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+
+    function setMenuOpen(open) {
+      document.body.classList.toggle('menu-open', open);
+      menuToggle.setAttribute('aria-expanded', String(open));
+      menuToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      mobileMenu.setAttribute('aria-hidden', String(!open));
+    }
+
+    menuToggle.addEventListener('click', () => {
+      setMenuOpen(!document.body.classList.contains('menu-open'));
+    });
+    menuToggle.addEventListener('pointerdown', () => menuToggle.classList.add('pointer-focus'));
+    document.querySelector('.site-title').addEventListener('click', () => setMenuOpen(false));
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Tab') menuToggle.classList.remove('pointer-focus');
+      if (event.key === 'Escape') setMenuOpen(false);
+    });
+    window.matchMedia('(min-width: 768px)').addEventListener('change', (event) => {
+      if (event.matches) setMenuOpen(false);
+    });
   </script>
 </body>
 </html>
