@@ -24,7 +24,7 @@
       --gap: 11px;
       --container-width: min(var(--site-max), calc(100vw - (var(--site-gutter) * 2)));
       --row: calc(var(--container-width) * .0215);
-      --cell: calc((var(--container-width) - (var(--gap) * 23)) / 24);
+      --cell: calc((var(--site-max) - (var(--gap) * 23)) / 24);
       --grid-gutter: calc(var(--site-gutter) - var(--gap));
     }
 
@@ -58,7 +58,10 @@
     .menu-toggle,
     .mobile-menu { display: none; }
 
-    .opening { padding-top: 136px; }
+    .opening {
+      padding-top: calc(77.9844px + .1vmax);
+      padding-bottom: .1vmax;
+    }
     .opening-grid,
     .work-grid {
       display: grid;
@@ -67,81 +70,99 @@
       row-gap: var(--gap);
       width: 100%;
     }
-    .opening-grid { grid-template-rows: repeat(30, minmax(var(--row), auto)); }
+    .opening-grid {
+      grid-template-rows: repeat(30, minmax(var(--row), auto));
+      overflow-x: hidden;
+      overflow-x: clip;
+    }
 
     .email {
       z-index: 6;
       grid-area: 1 / 2 / 3 / 14;
-      align-self: start;
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-start;
+      margin: 0;
       font-size: .98rem;
       font-style: italic;
-      transform: translateX(1.5vw);
     }
 
     .portfolio {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       margin: 0;
-      overflow: hidden;
       font-family: MinionCondensed, Georgia, serif;
-      font-size: clamp(130px, 17.17vw, 280.1px);
+      font-size: 100px;
       font-weight: 400;
-      line-height: .86;
+      line-height: 1;
       letter-spacing: 0;
+      text-align: center;
       white-space: nowrap;
     }
-    .portfolio span { display: inline-block; transform: translateX(.9vw); transform-origin: left center; }
+    .portfolio span { display: inline-block; width: max-content; }
     .portfolio-front { z-index: 4; grid-area: 3 / 2 / 12 / 26; }
     .portfolio-back { z-index: 2; grid-area: 9 / 2 / 18 / 26; }
 
     .portrait {
       z-index: 3;
       grid-area: 7 / 14 / 26 / 26;
-      align-self: start;
-      justify-self: end;
-      width: 95%;
-      height: auto;
-      aspect-ratio: 687 / 843;
+      align-self: stretch;
+      justify-self: stretch;
+      display: block;
+      width: 100%;
+      height: 100%;
       min-height: 0;
       object-fit: cover;
       object-position: 50% 50%;
-      transform: translateX(.75vw);
     }
 
     .bio {
       z-index: 1;
       grid-area: 17 / 4 / 25 / 14;
-      align-self: start;
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: stretch;
       font-family: MinionCondensed, Georgia, serif;
-      font-size: 1.6rem;
+      font-size: min(calc((1.6 - 1) * 1.2vw + 1rem), max(calc((1.6 - 1) * .012 * 1459px + 1rem), calc(1.6 * 1rem)));
       font-weight: 400;
-      line-height: 1.4;
-      transform: translateX(1.5vw);
+      line-height: 1.3664;
     }
-    .bio p { margin: 0 0 1.6em; }
+    .bio h3 {
+      margin: 2rem 0;
+      font: inherit;
+    }
+    .bio h3:first-child { margin-top: 0; }
+    .bio h3:last-child { margin-bottom: 0; }
 
-    .identity {
-      z-index: 7;
-      grid-area: 26 / 14 / 29 / 25;
-      align-self: start;
+    .identity-name,
+    .identity-role {
+      align-self: stretch;
+      margin: 0;
       white-space: nowrap;
-      transform: translateX(1.5vw);
     }
-    .identity strong {
-      display: block;
-      font-family: NeueHaas, Arial, sans-serif;
-      font-size: clamp(48px, 5.4vw, 88px);
+    .identity-name {
+      z-index: 7;
+      grid-area: 26 / 14 / 28 / 25;
+      font-family: InterTight, Arial, sans-serif;
+      font-size: min(calc((4.31 - 1) * 1.2vw + 1rem), max(calc((4.31 - 1) * .012 * 1459px + 1rem), calc(4.31 * 1rem)));
       font-weight: 700;
-      line-height: .82;
-      letter-spacing: -.045em;
+      line-height: .71;
+      text-transform: uppercase;
     }
-    .identity em {
-      display: block;
+    .identity-role {
+      z-index: 5;
+      grid-area: 27 / 14 / 29 / 25;
       font-family: MinionCondensed, Georgia, serif;
-      font-size: clamp(30px, 2.5vw, 40px);
+      font-size: min(calc((2.5 - 1) * 1.2vw + 1rem), max(calc((2.5 - 1) * .012 * 1459px + 1rem), calc(2.5 * 1rem)));
       font-weight: 400;
-      line-height: 1;
+      font-style: italic;
+      line-height: 1.316;
     }
 
     .work-section { padding-top: 0; }
@@ -307,7 +328,10 @@
       }
       body.menu-open .mobile-menu a { transform: translateY(0); }
 
-      .opening { padding-top: 94.9375px; }
+      .opening {
+        padding-top: calc(94.9375px + .1vmax);
+        padding-bottom: .1vmax;
+      }
       .opening-grid,
       .work-grid,
       .footer-grid {
@@ -324,10 +348,8 @@
       .portfolio {
         width: auto;
         overflow: visible;
-        font-size: 91.8px;
-        line-height: 1.232;
+        line-height: 1;
       }
-      .portfolio span { transform: none; }
       .portfolio-front { z-index: 4; grid-area: 3 / 2 / 6 / 10; }
       .portfolio-back { z-index: 5; grid-area: 1 / 2 / 4 / 10; }
 
@@ -344,25 +366,21 @@
         transform: none;
       }
 
-      .identity {
-        z-index: 7;
-        grid-area: 15 / 2 / 18 / 10;
-        position: relative;
+      .identity-name,
+      .identity-role {
         align-self: stretch;
         margin: 0;
-        white-space: normal;
-        transform: none;
+        white-space: nowrap;
       }
-      .identity strong {
-        position: absolute;
-        inset: 0 auto auto 0;
-        font-size: calc((2.74 - 1) * calc(.012 * min(100vh, 900px)) + 1rem);
-        line-height: 1.22;
+      .identity-name {
+        z-index: 7;
+        grid-area: 15 / 2 / 17 / 10;
+        font-size: calc((4.31 - 1) * calc(.012 * min(100vh, 900px)) + 1rem);
+        line-height: .71;
       }
-      .identity em {
-        position: absolute;
-        top: 35px;
-        left: 0;
+      .identity-role {
+        z-index: 5;
+        grid-area: 16 / 2 / 18 / 10;
         font-size: calc((2.5 - 1) * calc(.012 * min(100vh, 900px)) + 1rem);
         line-height: 1.316;
       }
@@ -373,7 +391,6 @@
         margin: 0;
         font-size: calc((.98 - 1) * calc(.012 * min(100vh, 900px)) + 1rem);
         line-height: 1.4;
-        transform: none;
       }
       .bio {
         z-index: 3;
@@ -381,9 +398,7 @@
         width: auto;
         font-size: calc((1.6 - 1) * calc(.012 * min(100vh, 900px)) + 1rem);
         line-height: 1.3664;
-        transform: none;
       }
-      .bio p { margin: 0 0 2rem; }
 
       .work-section { padding: 0; }
       .work-grid { grid-template-rows: repeat(12, minmax(24px, auto)); }
@@ -449,15 +464,13 @@
         <img class="portrait" src="portrait.jpg" alt="Black-and-white portrait of Keven Mema">
 
         <div class="bio">
-          <p>Hey!</p>
-          <p>I’m Keven, a Director / Cinematographer (and a number of other things) based in New York. <em>“Before I had movies and cameras It was just me and my imagination.”</em></p>
-          <p>I've been a resident of the entertainment and commercial world for the last 4 years and counting. I've created, lead, and shaped every aspect of production, I’m dedicated to bringing visions to life.</p>
+          <h3>Hey!</h3>
+          <h3>I’m Keven, a Director / Cinematographer (and a number of other things) based in New York. <em>“Before I had movies and cameras It was just me and my imagination.”</em></h3>
+          <h3>I've been a resident of the entertainment and commercial world for the last 4 years and counting. I've created, lead, and shaped every aspect of production, I’m dedicated to bringing visions to life.</h3>
         </div>
 
-        <div class="identity">
-          <strong>KEVEN MEMA</strong>
-          <em>Director &amp; Cinematographer</em>
-        </div>
+        <p class="identity-name">KEVEN MEMA</p>
+        <h2 class="identity-role">Director &amp; Cinematographer</h2>
       </div>
     </section>
 
@@ -488,6 +501,30 @@
   </footer>
 
   <script>
+    const portfolioTitles = document.querySelectorAll('.portfolio');
+    let portfolioFitFrame;
+
+    function fitPortfolioTitles() {
+      portfolioTitles.forEach((title) => {
+        const word = title.querySelector('span');
+        title.style.fontSize = '100px';
+        const measuredWidth = word.getBoundingClientRect().width;
+        const availableWidth = title.clientWidth;
+        if (measuredWidth > 0 && availableWidth > 0) {
+          title.style.fontSize = `${Math.round((availableWidth / measuredWidth) * 1000) / 10}px`;
+        }
+      });
+    }
+
+    function queuePortfolioFit() {
+      cancelAnimationFrame(portfolioFitFrame);
+      portfolioFitFrame = requestAnimationFrame(fitPortfolioTitles);
+    }
+
+    queuePortfolioFit();
+    window.addEventListener('resize', queuePortfolioFit, { passive: true });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(queuePortfolioFit);
+
     const marquee = document.querySelector('.marquee');
     const featuredPathText = document.querySelector('#featured-wave-text');
     let featuredOffset = -178.5;
