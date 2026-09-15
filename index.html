@@ -29,7 +29,7 @@
     }
 
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; background: hsl(195 5% 11%); }
     body { margin: 0; overflow-x: hidden; color: var(--ink); background: var(--purple); font-family: InterTight, Arial, sans-serif; }
     a { color: inherit; }
 
@@ -75,6 +75,7 @@
       align-self: start;
       font-size: .98rem;
       font-style: italic;
+      transform: translateX(1.5vw);
     }
 
     .portfolio {
@@ -90,18 +91,22 @@
       letter-spacing: 0;
       white-space: nowrap;
     }
-    .portfolio span { display: inline-block; transform-origin: left center; }
+    .portfolio span { display: inline-block; transform: translateX(.9vw); transform-origin: left center; }
     .portfolio-front { z-index: 4; grid-area: 3 / 2 / 12 / 26; }
     .portfolio-back { z-index: 2; grid-area: 9 / 2 / 18 / 26; }
 
     .portrait {
       z-index: 3;
       grid-area: 7 / 14 / 26 / 26;
-      width: 100%;
-      height: 100%;
+      align-self: start;
+      justify-self: end;
+      width: 95%;
+      height: auto;
+      aspect-ratio: 687 / 843;
       min-height: 0;
       object-fit: cover;
       object-position: 50% 50%;
+      transform: translateX(.75vw);
     }
 
     .bio {
@@ -112,6 +117,7 @@
       font-size: 1.6rem;
       font-weight: 400;
       line-height: 1.4;
+      transform: translateX(1.5vw);
     }
     .bio p { margin: 0 0 1.6em; }
 
@@ -120,6 +126,7 @@
       grid-area: 26 / 14 / 29 / 25;
       align-self: start;
       white-space: nowrap;
+      transform: translateX(1.5vw);
     }
     .identity strong {
       display: block;
@@ -320,6 +327,7 @@
         font-size: 91.8px;
         line-height: 1.232;
       }
+      .portfolio span { transform: none; }
       .portfolio-front { z-index: 4; grid-area: 3 / 2 / 6 / 10; }
       .portfolio-back { z-index: 5; grid-area: 1 / 2 / 4 / 10; }
 
@@ -332,6 +340,8 @@
         margin: 0;
         object-fit: cover;
         object-position: 50% 50%;
+        aspect-ratio: auto;
+        transform: none;
       }
 
       .identity {
@@ -341,6 +351,7 @@
         align-self: stretch;
         margin: 0;
         white-space: normal;
+        transform: none;
       }
       .identity strong {
         position: absolute;
@@ -362,6 +373,7 @@
         margin: 0;
         font-size: calc((.98 - 1) * calc(.012 * min(100vh, 900px)) + 1rem);
         line-height: 1.4;
+        transform: none;
       }
       .bio {
         z-index: 3;
@@ -369,6 +381,7 @@
         width: auto;
         font-size: calc((1.6 - 1) * calc(.012 * min(100vh, 900px)) + 1rem);
         line-height: 1.3664;
+        transform: none;
       }
       .bio p { margin: 0 0 2rem; }
 
@@ -454,7 +467,7 @@
           <a class="marquee-link" href="work/index.html" aria-label="Open the Work overview">
             <svg fill="currentColor" aria-hidden="true">
               <g transform="translate(0, 4.1)"><path id="featured-wave" fill="none" stroke="transparent" d="M-550,54.284 L-550,54.284 S-183.15,84.284 0,84.284 S366.85,54.284 550,54.284 S916.85,84.284 1100,84.284 S1466.85,54.284 1650,54.284 S2016.85,84.284 2200,84.284"></path></g>
-              <text><textPath id="featured-wave-text" href="#featured-wave" startOffset="-178.5"><tspan x="0">FEATURED WORK</tspan><tspan x="405.564">FEATURED WORK</tspan><tspan x="811.128">FEATURED WORK</tspan><tspan x="1216.692">FEATURED WORK</tspan><tspan x="1622.256">FEATURED WORK</tspan><tspan x="2027.82">FEATURED WORK</tspan><tspan x="2433.384">FEATURED WORK</tspan><tspan x="2838.948">FEATURED WORK</tspan></textPath></text>
+              <text><textPath id="featured-wave-text" href="#featured-wave" startOffset="-178.5"><tspan x="0">FEATURED WORK</tspan><tspan x="445.564">FEATURED WORK</tspan><tspan x="891.128">FEATURED WORK</tspan><tspan x="1336.692">FEATURED WORK</tspan><tspan x="1782.256">FEATURED WORK</tspan><tspan x="2227.82">FEATURED WORK</tspan><tspan x="2673.384">FEATURED WORK</tspan><tspan x="3118.948">FEATURED WORK</tspan></textPath></text>
             </svg>
           </a>
         </div>
@@ -485,7 +498,7 @@
     function moveFeaturedWork() {
       if (!wavePaused && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         featuredOffset += .5;
-        if (featuredOffset >= 227.064) featuredOffset -= 405.564;
+        if (featuredOffset >= 267.064) featuredOffset -= 445.564;
         featuredPathText.setAttribute('startOffset', featuredOffset);
       }
       requestAnimationFrame(moveFeaturedWork);
