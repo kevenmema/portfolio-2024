@@ -50,48 +50,42 @@
     }
     .site-header.on-footer { background: var(--dark); }
     .site-title {
-      font: 700 1.6rem/1 AktivExtended, Arial, sans-serif;
+      font: 700 19.5px/1 AktivExtended, Arial, sans-serif;
       letter-spacing: .03em;
       text-decoration: none;
     }
     .work-link {
-      font: 500 2rem/1 InterTight, Arial, sans-serif;
+      font: 500 26px/1 InterTight, Arial, sans-serif;
       text-decoration: none;
     }
 
     .reels-section {
-      padding-top: calc(4vw + 4rem);
+      padding-top: clamp(100px, 5.91vw, 121px);
       padding-bottom: 10vw;
       color: var(--lime);
       background: var(--black);
     }
     .reels-grid {
-      display: grid;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       position: relative;
-      width: 100%;
-      grid-template-columns:
-        minmax(var(--grid-gutter), 1fr)
-        repeat(24, minmax(0, var(--cell)))
-        minmax(var(--grid-gutter), 1fr);
-      grid-template-rows: repeat(26, minmax(var(--row), auto));
-      gap: var(--gap);
-      overflow-x: hidden;
-      overflow-x: clip;
+      width: var(--container-width);
+      margin-inline: auto;
+      gap: clamp(36px, 2.15vw, 44px);
     }
     .reel-title {
-      grid-area: 2 / 5 / 7 / 23;
-      align-self: start;
+      width: 100%;
+      min-width: 0;
       z-index: 3;
       margin: 0;
-      font: 700 clamp(5rem, 11.25vw, 10.6rem)/.71 InterTight, Arial, sans-serif;
+      font: 700 min(10.8vw, 166px)/1 InterTight, Arial, sans-serif;
       letter-spacing: 0;
       text-align: center;
       text-transform: uppercase;
       white-space: nowrap;
     }
     .reel-player {
-      grid-area: 7 / 2 / 27 / 26;
-      align-self: start;
       z-index: 5;
       width: 100%;
       min-width: 0;
@@ -161,18 +155,12 @@
       .work-link { font-size: 20px; }
       .reels-section { padding-top: 98px; padding-bottom: 18vw; }
       .reels-grid {
-        grid-template-columns:
-          minmax(var(--grid-gutter), 1fr)
-          repeat(8, minmax(0, var(--cell)))
-          minmax(var(--grid-gutter), 1fr);
-        grid-template-rows: repeat(12, minmax(24px, auto));
+        width: calc(100% - (var(--mobile-gutter) * 2));
+        gap: 32px;
       }
       .reel-title {
-        grid-area: 2 / 2 / 5 / 10;
-        align-self: center;
-        font-size: clamp(3.3rem, 15.4vw, 6.25rem);
+        font-size: 12.9vw;
       }
-      .reel-player { grid-area: 5 / 2 / 13 / 10; }
       .footer-grid {
         grid-template-columns:
           minmax(var(--grid-gutter), 1fr)
@@ -199,8 +187,7 @@
 
     @media (min-width: 768px) {
       .site-header {
-        height: clamp(78px, 6.25vw, 128px);
-        min-height: 78px;
+        height: 72px;
         padding: 0 2vw;
       }
     }
