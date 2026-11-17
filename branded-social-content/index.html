@@ -736,6 +736,32 @@
       html { scroll-behavior: auto; }
       .reveal { opacity: 1; transform: none; transition: none; }
     }
+  
+    /* New project groups use the existing archive typography, palette and native players. */
+    .portfolio-additions { width: min(var(--site-max), 92vw); margin: 0 auto; padding: 0 0 clamp(70px, 9vw, 140px); }
+    .addition-project { scroll-margin-top: 140px; border-top: 1px solid var(--black); padding-top: clamp(36px, 4vw, 64px); margin-bottom: clamp(90px, 10vw, 160px); }
+    .addition-project:last-child { margin-bottom: 0; }
+    .addition-intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 80px); margin-bottom: clamp(30px, 4vw, 60px); }
+    .addition-project .project-title { font-size: clamp(44px, 4.6vw, 74px); line-height: .9; }
+    .addition-copy { display: grid; gap: 18px; align-content: start; }
+    .addition-copy p { margin: 0; }
+    .addition-films { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(18px, 2.2vw, 36px); align-items: start; }
+    .addition-films.two-films { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 1000px; margin-left: auto; margin-right: auto; }
+    .addition-film { min-width: 0; margin: 0; }
+    .addition-film .media-card { width: 100%; aspect-ratio: 9 / 16; background: #111; }
+    .addition-film video { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .addition-film figcaption { margin-top: 14px; font: 500 clamp(16px, 1.3vw, 20px)/1.35 InterTight, Arial, sans-serif; }
+    .addition-film figcaption a, .release-note { display: block; margin-top: 6px; }
+    .addition-film figcaption a { text-underline-offset: .15em; }
+    .release-note { font-size: .85em; }
+    @media (max-width: 767px) {
+      .portfolio-additions { width: 88vw; }
+      .addition-project { scroll-margin-top: 115px; }
+      .addition-intro { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+      .addition-project .project-title { font-size: clamp(40px, 11vw, 60px); line-height: .92; }
+      .addition-copy .description, .addition-copy .role, .addition-copy .date { font-size: 20px; line-height: 1.25; }
+      .addition-films, .addition-films.two-films { grid-template-columns: minmax(0, 1fr); gap: 38px; max-width: 440px; margin-left: auto; margin-right: auto; }
+    }
   </style>
 </head>
 <body>
@@ -817,6 +843,18 @@
         <div class="media-card poizon-19 reveal"><video controls playsinline preload="none" poster="images/363fbeb0-2e9c-4953-ba7a-2052f2677834.webp"><source src="https://pub-87ffb43ac56d40b19d5ad2f51cd0d674.r2.dev/31-poizon-nike-pedestal.mp4" type="video/mp4"></video></div>
         <div class="rule poizon-rule" aria-hidden="true"></div>
       </div>
+    </section>
+
+
+    <section class="portfolio-additions" aria-label="Social and event projects">
+      <article class="addition-project reveal" id="naomi-watanabe">
+        <div class="addition-intro"><h2 class="project-title">Naomi Watanabe<br>Event Recaps</h2><div class="addition-copy"><p class="project-copy description">A series of social videos following Naomi Watanabe through Super Bowl weekend and NBA All-Star events. Working through VX Media, I handled the camera work and full post-production, from the edit and color grade to sound and motion effects.</p><p class="project-copy role">Role: Videographer / Editor / Colorist / Sound / Motion Effects</p><p class="project-copy date">Project Date: 2024<br>Production: VX Media</p></div></div>
+        <div class="addition-films"><figure class="addition-film"><div class="media-card"><video controls playsinline preload="none" poster="images/naomi-super-bowl-recap.jpg" aria-label="Super Bowl Weekend Recap"><source src="https://pub-87ffb43ac56d40b19d5ad2f51cd0d674.r2.dev/NFL%20Superbowl%20Weekend%20recap.mp4" type="video/mp4"></video></div><figcaption>Super Bowl Weekend Recap <a href="https://www.instagram.com/reel/C3ObHP5P1dk/" target="_blank" rel="noopener noreferrer">View published reel</a></figcaption></figure><figure class="addition-film"><div class="media-card"><video controls playsinline preload="none" poster="images/naomi-super-bowl-vlog-2.jpg" aria-label="Super Bowl Sunday — Vlog 2"><source src="https://pub-87ffb43ac56d40b19d5ad2f51cd0d674.r2.dev/Superbowl%20Sunday%20Vlog%202.mp4" type="video/mp4"></video></div><figcaption>Super Bowl Sunday — Vlog 2 <a href="https://www.instagram.com/reel/C3Uoz4eurt-/" target="_blank" rel="noopener noreferrer">View published reel</a></figcaption></figure><figure class="addition-film"><div class="media-card"><video controls playsinline preload="none" poster="images/naomi-nba-all-star.jpg" aria-label="NBA All-Star Weekend — Player Video"><source src="https://pub-87ffb43ac56d40b19d5ad2f51cd0d674.r2.dev/NBA%20Allstar%20Weekend_Player%20Vid_Pass%203.mp4" type="video/mp4"></video></div><figcaption>NBA All-Star Weekend — Player Video <span class="release-note">Completed, unreleased</span></figcaption></figure></div>
+      </article>
+      <article class="addition-project reveal" id="vaeria-camar-birthday">
+        <div class="addition-intro"><h2 class="project-title">Vaeria Camar<br>Birthday Films</h2><div class="addition-copy"><p class="project-copy description">Two films capturing a private costume-themed birthday celebration, with the host and guests taking part in a murder-mystery game. I shot and edited both pieces for the client.</p><p class="project-copy role">Role: Videographer / Editor</p><p class="project-copy date">Project Date: Autumn 2024<br>Private event commission</p></div></div>
+        <div class="addition-films two-films"><figure class="addition-film"><div class="media-card"><video controls playsinline preload="none" poster="images/birthday-recap.jpg" aria-label="Birthday Recap"><source src="https://pub-87ffb43ac56d40b19d5ad2f51cd0d674.r2.dev/Birthday%20Recap%201.mp4" type="video/mp4"></video></div><figcaption>Birthday Recap</figcaption></figure><figure class="addition-film"><div class="media-card"><video controls playsinline preload="none" poster="images/birthday-coronation.jpg" aria-label="Her Coronation"><source src="https://pub-87ffb43ac56d40b19d5ad2f51cd0d674.r2.dev/Her%20Corination.mp4" type="video/mp4"></video></div><figcaption>Her Coronation</figcaption></figure></div>
+      </article>
     </section>
 
     <section class="related-section" aria-label="Related work">

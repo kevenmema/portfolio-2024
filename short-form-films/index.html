@@ -328,6 +328,16 @@
       html { scroll-behavior: auto; }
       .reveal { opacity: 1; transform: none; transition: none; }
     }
+  
+    .music-video-project { scroll-margin-top: 140px; }
+    @media (max-width: 767px) {
+      .project-grid > .music-video-project { display: grid; grid-template-columns: minmax(0, 1fr); grid-column: 2 / 10; grid-row: 205 / span 1; gap: 24px; margin: 40px 0 48px; }
+      .music-video-project .project-text, .music-video-project .project-media { display: block; }
+      .music-video-project .project-intro { margin-bottom: 24px; }
+      .music-video-project .project-date { margin-bottom: 20px; }
+      .music-video-project .video-wrap { aspect-ratio: 16 / 9; }
+    }
+  .music-video-project .project-title { line-height: .9; }
   </style>
 </head>
 <body>
@@ -377,6 +387,11 @@
         <section class="project-block reveal">
           <div class="project-text"><article class="project-intro"><h2 class="project-title">NIGHT HAWKS (d.o.p, TBA)</h2><p class="project-description">In the dead of night, two friends, Derek and Mike, share a seemingly simple conversation that spirals into a mind-bending revelation, unraveling personal doubts, secrets and testing the boundaries of their friendship.</p></article><p class="project-date">Project Date: August 2024<br>Location: New York</p><div class="credits"><p>Producer: Ginevra Zaroni &amp; Keven Mema</p><p>Writer &amp; Director: Ginevra Zaroni</p><p><strong>Director Of Photography: Keven Mema</strong></p><p>1st Assistant Camera: Sean Conover</p><p>1st P.A: Andres Plazas</p><p>2nd P.A: Joe Trotta</p><p>3rd P.A: Klara Hoxcha</p><p>Gaffer: Vic Diaz</p><p>Grip: John Bugajski</p><p>Sound Mixer: Nick Trotta</p><p>Editor, Colorist &amp; Sound Mix: Keven Mema</p></div></div>
           <div class="project-media"><img class="media" src="images/night-hawks.webp" alt="Night Hawks film still"></div>
+        </section>
+
+        <section class="project-block music-video-project reveal" id="gianna-j-what-we-wanted">
+          <div class="project-text"><article class="project-intro"><h2 class="project-title">WHAT WE WANTED</h2><p class="project-description">A released music video for GIANNA J, showcasing my cinematography work.</p></article><p class="project-date">Project Date: Late 2025</p><div class="credits"><p>Artist: GIANNA J</p><p><strong>Cinematography: Keven Mema</strong></p><p><a href="https://www.youtube.com/watch?v=Eq-gNB368Xg" target="_blank" rel="noopener noreferrer">Watch on YouTube</a></p></div></div>
+          <div class="project-media"><div class="video-wrap"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/Eq-gNB368Xg?rel=0&amp;playsinline=1" title="GIANNA J — WHAT WE WANTED (Music Video)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></div>
         </section>
       </div>
     </section>
